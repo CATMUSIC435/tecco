@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Offline TF.js - Giọng nói & Tự học</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
+    <div class="w-full max-w-md bg-gray-800 rounded-2xl shadow-lg p-5 space-y-4">
+        <h1 class="text-2xl font-bold text-center">🤖 Chatbot Offline (TF.js)</h1>
+
+        <div id="chat" class="h-80 overflow-y-auto bg-gray-700 p-3 rounded space-y-2"></div>
+
+        <div class="flex gap-2">
+            <input id="input" type="text" placeholder="Hỏi tôi điều gì đó..."
+                class="flex-1 p-2 rounded bg-gray-600 focus:outline-none" />
+            <button id="send" class="bg-blue-600 hover:bg-blue-500 px-3 rounded">Gửi</button>
+            <button id="mic" class="bg-red-600 hover:bg-red-500 px-3 rounded">🎤</button>
+        </div>
+    </div>
+
+    <script>
+        // ---------------------------
+        // 🧩 DỮ LIỆU CƠ BẢN
+        // ---------------------------
+        let dataset = [
+            { q: "xin chào", a: "Chào bạn, tôi là chatbot offline!" },
+            { q: "bạn tên gì", a: "Tôi chưa có tên, bạn muốn đặt cho tôi không?" },
+            { q: "bạn làm được gì", a: "Tôi có thể học từ bạn và trò chuyện!" },
+            { q: "tạm biệt", a: "Tạm biệt, hẹn gặp lại!" }
+        ];
+
+        // ---------------------------
+        // 💾 KHÔI PHỤC DỮ LIỆU ĐÃ LƯU
+        // ---------------------------
+        const saved = localStorage.getItem("chatbot_memory");
+        if (saved) dataset = JSON.parse(saved);
+
+        let model;
+
+        // ---------------------------
+        // 🔠 CHUYỂN VĂN BẢN THÀNH VECTOR
+        // ---------------------------
+        function textToVector(text) {
+            const vec = new Array(50).fill(0);
+            text.toLowerCase().split('').forEach((ch, i) => {
+                vec[i % 50] += ch.charCodeAt(0) / 255;
+            });
+            return vec;
+        }
+
+        // ---------------------------
+        // 🧠 TẠO HOẶC TẢI MÔ HÌNH
+        // ---------------------------
+        async function initModel() {
+            try {
+                model = await tf.loadLayersModel('indexeddb://chatbot-model');
+                console.log("✅ Đã tải model từ IndexedDB");
+            } catch (e) {
+                console.log("⚙️ Tạo mới model...");
+                model = tf.sequential();
+                model.add(tf.layers.dense({ units: 16, inputShape: [50], activation: 'relu' }));
+                model.add(tf.layers.dense({ units: dataset.length, activation: 'softmax' }));
+                model.compile({ optimizer: 'adam', loss: 'categoricalCrossentropy' });
+                await trainModel();
+            }
+        }
+
+        async function trainModel() {
+            const xs = tf.tensor2d(dataset.map(d => textToVector(d.q)));
+            const ys = tf.tensor2d(dataset.map((_, i) => {
+                const arr = new Array(dataset.length).fill(0);
+                arr[i] = 1;
+                return arr;
+            }));
+            await model.fit(xs, ys, { epochs: 30, verbose: 0 });
+            await model.save('indexeddb://chatbot-model');
+            console.log("💾 Model đã được lưu vào IndexedDB");
+        }
+
+        // ---------------------------
+        // 💬 HIỂN THỊ TIN NHẮN
+        // ---------------------------
+        function addMessage(text, from = "bot") {
+            const chat = document.getElementById("chat");
+            const msg = document.createElement("div");
+            msg.className = from === "bot"
+                ? "bg-blue-700 p-2 rounded max-w-xs"
+                : "bg-gray-600 p-2 rounded max-w-xs ml-auto";
+            msg.textContent = text;
+            chat.appendChild(msg);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // ---------------------------
+        // 🧩 DỰ ĐOÁN TRẢ LỜI
+        // ---------------------------
+        async function getAnswer(question) {
+            const input = tf.tensor2d([textToVector(question)]);
+            const output = model.predict(input);
+            const index = output.argMax(1).dataSync()[0];
+            const confidence = output.max().dataSync()[0];
+            if (confidence < 0.5) return null;
+            return dataset[index].a;
+        }
+
+        // ---------------------------
+        // 🗣️ TEXT-TO-SPEECH
+        // ---------------------------
+        function speak(text) {
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = "vi-VN";
+            msg.rate = 1;
+            speechSynthesis.speak(msg);
+        }
+
+        // ---------------------------
+        // 🎤 SPEECH-TO-TEXT
+        // ---------------------------
+        function startListening() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'vi-VN';
+              recognition.rate = 1;
+            recognition.start();
+            recognition.onresult = (e) => {
+                const transcript = e.results[0][0].transcript;
+                document.getElementById("input").value = transcript;
+                document.getElementById("send").click();
+            };
+        }
+
+        // ---------------------------
+        // 🧠 XỬ LÝ GỬI CÂU HỎI
+        // ---------------------------
+        document.getElementById("send").onclick = async () => {
+            const input = document.getElementById("input");
+            const question = input.value.trim();
+            if (!question) return;
+            addMessage(question, "user");
+            input.value = "";
+
+            let answer = await getAnswer(question);
+
+            if (!answer) {
+                answer = "Tôi chưa hiểu câu này, bạn có thể dạy tôi không?";
+                addMessage(answer);
+                speak(answer);
+
+                // Tự học
+                const reply = prompt("Nhập câu trả lời cho: \"" + question + "\"");
+                if (reply) {
+                    dataset.push({ q: question.toLowerCase(), a: reply });
+                    localStorage.setItem("chatbot_memory", JSON.stringify(dataset));
+                    await trainModel();
+                    addMessage("Cảm ơn! Tôi đã học thêm câu mới. 🤖");
+                    speak("Cảm ơn, tôi đã học thêm câu mới!");
+                }
+            } else {
+                addMessage(answer);
+                speak(answer);
+            }
+        };
+
+        document.getElementById("mic").onclick = startListening;
+
+        // ---------------------------
+        // 🚀 KHỞI ĐỘNG
+        // ---------------------------
+        initModel();
+    </script>
+</body>
+
+</html>

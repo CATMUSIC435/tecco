@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hiệu ứng điểm sáng khi rê chuột lên ảnh</title>
+    <style>
+        :root {
+            --container-width: 900px;
+            --container-radius: 12px;
+        }
+
+        .img-wrap {
+            width: min(95vw, var(--container-width));
+            border-radius: var(--container-radius);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+        }
+
+        .img-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+            user-select: none;
+            -webkit-user-drag: none;
+            transform: translateZ(0);
+            /* help rendering */
+        }
+
+        /* canvas overlay để vẽ điểm sáng. pointer-events none để event đi qua container */
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            mix-blend-mode: screen;
+            /* giúp hiệu ứng sáng hòa quyện */
+        }
+
+        /* optional: một lớp highlight blur mềm khi hover toàn ảnh */
+        .img-wrap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(50% 50% at 50% 30%, rgba(255, 255, 255, 0.02), transparent 40%);
+            z-index: 1;
+            transition: opacity .35s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .img-wrap.hovering::after {
+            opacity: 1;
+        }
+
+        /* mobile hint */
+        .hint {
+            font-size: 13px;
+            text-align: center;
+            margin-top: 18px;
+            opacity: .8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="relative">
+        <div class="city-image">
+            <img src="diamond-boulevard.jpg">
+            <div class="shine"></div>
+        </div>
+    </div>
+
+    <style>
+        .city-image {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .city-image img {
+            width: 100%;
+            display: block;
+            transition: transform 2s ease;
+        }
+
+        .city-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .shine {
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+        }
+
+        .city-image:hover .shine {
+            animation: shimmer 1.2s forwards;
+        }
+
+        @keyframes shimmer {
+            100% {
+                left: 125%;
+            }
+        }
+    </style>
+
+</body>
+
+</html>

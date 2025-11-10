@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @font-face {
+            font-family: "SVN Larken";
+            src: url("assets/fonts/SVN-LARKEN-BOLD.OTF") format("opentype");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "SVN Larken Regular";
+            src: url("assets/fonts/SVN-Gilroy Regular.otf") format("opentype");
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @import url("https://fonts.cdnfonts.com/css/pp-neue-montreal");
+
+        @font-face {
+            font-family: "PPSupplyMono";
+            src: url("https://assets.codepen.io/7558/PPSupplyMono-Regular.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --font-mono: "PPSupplyMono", monospace;
+            --font-sans: "PP Neue Montreal", sans-serif;
+            --font-emoji: "emoji", sans-serif;
+            --color-bg: #000;
+            --color-text: #fff;
+            --color-text-muted: rgba(255, 255, 255, 0.8);
+            --color-text-light: rgba(255, 255, 255, 0.6);
+            --color-accent: #fff;
+            --font-size-mono: clamp(10px, 1.2vw, 12px);
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+        }
+
+        body {
+            font-family: emoji;
+            cursor: pointer;
+        }
+
+        .splide__slide img {
+            transition: transform 1.5s ease, opacity 1.5s ease;
+            object-fit: cover;
+        }
+
+        .splide__slide.is-active img {
+            /* transform: scale(1.05); */
+            opacity: 1;
+        }
+
+        .splide__slide:not(.is-active) img {
+            opacity: 0.4;
+        }
+
+        /* --- CUSTOM ARROWS --- */
+        .splide__arrow {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(6px);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .splide__arrow:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body class="bg-[#002d4d]! w-screen overflow-x-hidden">
+    <div id="fullpage" class="z-10">
+
+
+        <div class="section md:flex items-center justify-center relative overflow-hidden">
+            <div class="h-[45vh] md:h-screen w-screen overflow-hidden">
+                <div class="w-screen h-[45vh] md:h-screen bg-[position:65%_0] md:bg-top md:bg-[105%,100%] bg-[175%,100%] overflow-hidden"
+                    style="background-image: url(diamond-boulevard.jpg);">
+                </div>
+            </div>
+
+            <div
+                class="absolute bottom-0 left-0 w-auto md:w-full h-[45vh] md:h-screen overflow-hidden flex flex-col justify-end">
+                <video data-depth='50' autoplay muted loop playsinline id='myVideo' class="w-full opacity-40">
+                    <source src="golden.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="absolute top-0 left-0 w-screen h-[45vh] md:h-screen custom-grid z-1">
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="section flex items-center justify-center">
+            <div class="flex flex-col-reverse md:flex-col w-screen md:h-screen relative z-0">
+                <div class="h-full relative overflow-hidden">
+                    <!-- Video nền -->
+                    <div class="absolute inset-0 z-0">
+                        <video src="assets/blue-sky-with-clouds.mov" autoplay muted loop playsinline
+                            class="absolute top-0 left-0 w-full h-full object-cover scale-105 opacity-80 z-0"></video>
+                    </div>
+
+                    <!-- Overlay ánh sáng -->
+                    <!-- <div class="absolute inset-0 z-[5] bg-gradient-to-b from-white/10 via-transparent to-black/40">
+                    </div> -->
+
+                    <!-- Lớp nội dung trên -->
+
+                    <div class="w-full h-[45vh] md:h-full relative md:scale-[1.2] bg-[position:75%_0] md:bg-top md:bg-[105%,100%] bg-[175%,100%] md:top-[60px] md:-left-[158px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]"
+                        style="background-image: url(diamond-boulevard-elm.png);">
+                    </div>
+                </div>
+
+                <div class="hidden md:block md:absolute top-[5%] left-[5%] max-w-4xl px-6 z-10">
+
+                    <h2 class="text-3xl md:text-5xl font-bold cinzel mb-10 uppercase">
+                        <span class="text-orange-500"></span> <br>
+                    </h2>
+                </div>
+                <div class="opacity-0 md:opacity-100 absolute bottom-[20%] left-[10%]">
+                    <button id="xemThemBtn"
+                        class="btn-luxury px-6 py-2 cinzel border-[1px] border-white cursor-pointer">Xem thêm</button>
+                </div>
+                <div id="infoLeft"
+                    class="hidden md:block opacity-0 md:opacity-100 cursor-none md:cursor-auto absolute top-[25%] left-[25%] text-black">
+                    <div class="max-w-[200px] w-full flex flex-col gap-4 divide-y-[1px] divide-amber-50">
+                        <div class="group">
+                            <h3
+                                class="font-bold font-sans uppercase mb-1 cinzel flex gap-2 items-center group-hover:luxury-text">
+                                <div class="w-4 h-4">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-0 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>
+                                Vị trí
+                            </h3>
+                            <p class="text-sm">Nguyễn Thị Minh Khai/2, Phường Tân Đông Hiệp, Tp. Hồ Chí Minh</p>
+                        </div>
+
+                        <div class="group">
+                            <h3
+                                class="font-bold font-sans uppercase mb-1 cinzel flex gap-2 items-center group-hover:luxury-text">
+                                <div class="w-4 h-4">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-0 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>Diện tích
+                            </h3>
+                            <p class="text-sm">9.372,0 m²</p>
+                        </div>
+
+                        <div class="group">
+                            <h3
+                                class="font-bold font-sans uppercase mb-1 cinzel flex gap-2 items-center group-hover:luxury-text">
+                                <div class="w-4 h-4">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-0 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>Loại hình sản phẩm
+                            </h3>
+                            <p class="text-sm">1PN: 140 Căn | 2PN: 840 Căn</p>
+                            <p class="text-sm">1PN+: 84 Căn | 2PN+: 140 Căn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="infoRight"
+                    class="hidden md:block opacity-0 md:opacity-100 cursor-none absolute top-[25%] right-[15%] text-black z-10">
+                    <div class="max-w-[200px] w-full flex flex-col gap-4 divide-y-[1px] divide-amber-50">
+                        <div class="group">
+                            <h3
+                                class="font-bold font-sans uppercase mb-1 cinzel flex gap-2 items-center group-hover:luxury-text">
+                                <div class="w-4 h-4">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-0 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>Vị trí
+                            </h3>
+                            <p class="text-sm">Nguyễn Thị Minh Khai/2, Phường Tân Đông Hiệp, Tp. Hồ Chí Minh</p>
+                        </div>
+
+                        <div class="group">
+                            <h3
+                                class="font-bold font-sans uppercase mb-1 cinzel flex gap-2 items-center group-hover:luxury-text">
+                                <div class="w-4 h-4">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-0 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>Diện tích
+                            </h3>
+                            <p class="text-sm">9.372,0 m²</p>
+                        </div>
+
+                        <div class="group">
+                            <h3
+                                class="font-bold font-sans uppercase mb-1 cinzel flex gap-2 items-center group-hover:luxury-text">
+                                <div class="w-4 h-4">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-0 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>Loại hình sản phẩm
+                            </h3>
+                            <p class="text-sm">1PN: 140 Căn | 2PN: 840 Căn</p>
+                            <p class="text-sm">1PN+: 84 Căn | 2PN+: 140 Căn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:absolute bottom-0 left-0">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-10 text-sm md:text-base px-2 py-4 md:px-8 md:py-4 bg-gradient-to-r from-orange-500 via-orange-300 to-transparent text-white divide-x-[1px] divide-gray-300">
+                        <div class="group flex flex-wrap">
+                            <div class="w-1/5 md:w-1/3">
+                                <div class="w-14 h-14 md:w-20 md:h-20">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>
+                            </div>
+                            <div class="w-2/3 px-1">
+                                <h3 class="font-bold font-sans uppercase mb-1 cinzel group-hover:luxury-text">Vị trí
+                                </h3>
+                                <div
+                                    class="my-[1px] w-0 group-hover:w-1/2 h-[0.5px] bg-white transition-all duration-150 ease-linear">
+                                </div>
+                                <p class="text-sm">Nguyễn Thị Minh Khai/2, Phường Tân Đông Hiệp, Tp. Hồ Chí Minh</p>
+                            </div>
+                        </div>
+
+                        <div class="group flex flex-wrap">
+                            <div class="w-1/5 md:w-1/3">
+                                <div class="w-14 h-14 md:w-20 md:h-20">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>
+                            </div>
+                            <div class="w-2/3 px-1">
+                                <h3 class="font-bold font-sans uppercase mb-1 cinzel group-hover:luxury-text">Vị trí
+                                </h3>
+                                <div
+                                    class="my-[1px] w-0 group-hover:w-1/2 h-[0.5px] bg-white transition-all duration-150 ease-linear">
+                                </div>
+                                <p class="text-sm">Nguyễn Thị Minh Khai/2, Phường Tân Đông Hiệp, Tp. Hồ Chí Minh</p>
+                            </div>
+                        </div>
+                        <div class="group flex flex-wrap">
+                            <div class="w-1/5 md:w-1/3">
+                                <div class="w-14 h-14 md:w-20 md:h-20">
+                                    <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[100%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                                </div>
+                            </div>
+                            <div class="w-2/3 px-1">
+                                <h3 class="font-bold font-sans uppercase mb-1 cinzel group-hover:luxury-text">Vị trí
+                                </h3>
+                                <div
+                                    class="my-[1px] w-0 group-hover:w-1/2 h-[0.5px] bg-white transition-all duration-150 ease-linear">
+                                </div>
+                                <p class="text-sm">Nguyễn Thị Minh Khai/2, Phường Tân Đông Hiệp, Tp. Hồ Chí Minh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="section overflow-hidden">
+            <div class="h-auto md:h-screen w-screen relative overflow-hidden">
+                <div class="h-full grid grid-cols-1 md:grid-cols-5 relative">
+                    <div class="col-span-5 h-full overflow-hidden relative custom-grid z-10">
+                        <div class="relative w-full h-auto py-8 md:py-0 md:h-full flex justify-end">
+                            <div class="relative">
+                                <div class="absolute top-[15.5%] left-[35.4%]">
+                                    <div
+                                        class="px-2 py-2 bg-[#002d4d] border-[1px] border-[#f5deb3] rounded-md relative">
+                                        <img src="assets/logo.png" class="h-14 animate-luxuryGlow" alt="" srcset="">
+                                        <span
+                                            class="absolute top-0 left-0 w-full h-full rounded-md border border-[#f5deb3]/70 animate-glow-1"></span>
+                                        <span
+                                            class="absolute top-0 left-0 w-full h-full rounded-md border border-[#f5deb3]/70 animate-glow-2"></span>
+                                        <span
+                                            class="absolute top-0 left-0 w-full h-full rounded-md border border-[#f5deb3]/70 animate-glow-3"></span>
+                                    </div>
+                                </div>
+                                <img src="assets/map.png" class="md:h-screen h-auto w-full md:w-auto" alt="">
+                            </div>
+
+                        </div>
+
+
+                        <div class="md:absolute md:top-[20%] left-[10%] z-20">
+                            <div class="relative z-1">
+                                <div
+                                    class="bg-gray-100 w-full md:w-[350px] relative md:top-[30%] md:-right-[40%] py-4 px-8">
+                                    <div
+                                        class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                                    </div>
+                                    <div
+                                        class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                                    </div>
+
+                                    <h2 class="text-3xl md:text-5xl font-bold cinzel mb-4 uppercase">
+                                        <span class="text-orange-500">Diamond Boulevard</span>
+                                    </h2>
+                                    <div class="text-black text-sm">
+                                        Được kiến tạo trên nền tảng <span class="text-orange-500 text-lg">"tọa độ năng
+                                            lượng"</span>, tọa lạc ngay vùng lõi siêu đô thị
+                                        tỷ đô
+                                        TP. Hồ Chí Minh, mang đến một không gian sống phồn vinh tràn đầy
+                                        sinh
+                                        khí.
+                                        <br>
+                                        Để dù ở bất kỳ phiên bản nào của chính mình, bạn vẫn luôn biết ơn vì đã chọn
+                                        SỐNG
+                                        NĂNG
+                                        LƯỢNG, chọn <span class="text-orange-500 text-xl"></span>!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="section overflow-hidden">
+            <div class="w-screen md:h-screen h-auto">
+                <div class="flex flex-col-reverse md:grid md:grid-cols-2 custom-grid relative">
+                    <div class="relative z-1">
+                        <div class="bg-gray-100 w-full md:w-[350px] relative md:top-[30%] md:-right-[40%] py-4 px-8">
+                            <div
+                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                            </div>
+                            <div
+                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                            </div>
+
+                            <h2 class="text-3xl md:text-5xl font-bold cinzel mb-4 uppercase">
+                                <span class="text-orange-500">Diamond Boulevard</span>
+                            </h2>
+                            <div class="text-black text-sm">
+                                Được kiến tạo trên nền tảng <span class="text-orange-500 text-lg">"tọa độ năng
+                                    lượng"</span>, tọa lạc ngay vùng lõi siêu đô thị
+                                tỷ đô
+                                TP. Hồ Chí Minh, mang đến một không gian sống phồn vinh tràn đầy
+                                sinh
+                                khí.
+                                <br>
+                                Để dù ở bất kỳ phiên bản nào của chính mình, bạn vẫn luôn biết ơn vì đã chọn SỐNG
+                                NĂNG
+                                LƯỢNG, chọn <span class="text-orange-500 text-xl"></span>!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-container py-12 md:py-20">
+                        <div class="main">
+
+                            <div class="circle">
+                                <div style="position: relative;width: 100%;height: 100%;">
+                                    <div class="icon-block" style="--i:0;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                                            alt="web design icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:1;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                                            alt="game design icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:2;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                                            alt="game dev icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:3;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:4;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:5;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:6;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:7;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="circle">
+                                <div style="position: relative;width: 100%;height: 100%;">
+                                    <div class="icon-block" style="--i:0;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                                            alt="web design icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:1;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                                            alt="game design icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:2;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                                            alt="game dev icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:3;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:4;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:5;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:6;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:7;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:8;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:9    ;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="circle">
+                                <div style="position: relative;width: 100%;height: 100%;">
+                                    <div class="icon-block" style="--i:0;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                                            alt="web design icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:1;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                                            alt="game design icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:2;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                                            alt="game dev icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:3;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:4;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+                                    <div class="icon-block" style="--i:5;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:6;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:7;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:8;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:9;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:10;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                    <div class="icon-block" style="--i:11;">
+                                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png"
+                                            alt="ui-ux icon" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="center-logo">
+                                <img src="assets/logo.png" alt="logo" class="w-20" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div
+                class="w-screen md:h-screen justify-between relative custom-grid overflow-hidden flex flex-col-reverse md:flex-row">
+
+                <div class="relative z-1">
+                    <div class="bg-gray-100 w-full md:w-[350px] relative md:top-[30%] md:-right-[40%] py-4 px-8">
+                        <div
+                            class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                        </div>
+                        <div
+                            class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                        </div>
+
+                        <h2 class="text-3xl md:text-5xl font-bold cinzel mb-4 uppercase">
+                            <span class="text-orange-500">Diamond Boulevard</span>
+                        </h2>
+                        <div class="text-black text-sm">
+                            Được kiến tạo trên nền tảng <span class="text-orange-500 text-lg">"tọa độ năng
+                                lượng"</span>, tọa lạc ngay vùng lõi siêu đô thị
+                            tỷ đô
+                            TP. Hồ Chí Minh, mang đến một không gian sống phồn vinh tràn đầy
+                            sinh
+                            khí.
+                            <br>
+                            Để dù ở bất kỳ phiên bản nào của chính mình, bạn vẫn luôn biết ơn vì đã chọn SỐNG
+                            NĂNG
+                            LƯỢNG, chọn <span class="text-orange-500 text-xl"></span>!
+                        </div>
+                    </div>
+                </div>
+                <div class="md:pl-24 md:h-screen overflow-hidden">
+                    <div class="relative w-full h-[50vh] md:h-[70vh] lg:h-[100vh] overflow-hidden">
+
+                        <!-- Splide Carousel -->
+                        <div id="luxury-carousel" class="splide w-full h-full">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
+                                        <div class="w-full h-full relative">
+                                            <img src="map.jpg" class="mx-auto h-full w-auto! object-cover"
+                                                alt="Slide 1">
+                                            <map name="image-map">
+                                                <area target="" alt="" title="" href=""
+                                                    coords="500,909,821,912,817,1304,500,1300" shape="poly">
+                                            </map>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3632 3509"
+                                                class="w-full h-full absolute top-0 left-0 z-10"
+                                                aria-labelledby="polyTitle" role="img">
+                                                <title id="polyTitle">Polygon từ image-map</title>
+
+                                                <polygon points="500,909 821,912 817,1304 500,1300" fill="transparent"
+                                                    stroke="#ff0000" stroke-width="8" stroke-linejoin="round"
+                                                    stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700" />
+
+                                            </svg>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
+                                        <div class="w-full h-full relative">
+                                            <img src="map.jpg" class="mx-auto h-full w-auto! object-cover"
+                                                alt="Slide 2">
+                                            <map name="image-map">
+                                                <area target="" alt="" title="" href=""
+                                                    coords="500,909,821,912,817,1304,500,1300" shape="poly">
+                                            </map>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3632 3509"
+                                                class="w-full h-full absolute top-0 left-0 z-10"
+                                                aria-labelledby="polyTitle" role="img">
+                                                <title id="polyTitle">Polygon từ image-map</title>
+
+                                                <polygon points="500,909 821,912 817,1304 500,1300" fill="transparent"
+                                                    stroke="#ff0000" stroke-width="8" stroke-linejoin="round"
+                                                    stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700" />
+
+                                            </svg>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
+                                        <div class="w-full h-full relative">
+                                            <img src="map.jpg" class="mx-auto h-full w-auto! object-cover"
+                                                alt="Slide 3">
+                                            <map name="image-map">
+                                                <area target="" alt="" title="" href=""
+                                                    coords="500,909,821,912,817,1304,500,1300" shape="poly">
+                                            </map>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3632 3509"
+                                                class="w-full h-full absolute top-0 left-0 z-10"
+                                                aria-labelledby="polyTitle" role="img">
+                                                <title id="polyTitle">Polygon từ image-map</title>
+
+                                                <polygon points="500,909 821,912 817,1304 500,1300" fill="transparent"
+                                                    stroke="#ff0000" stroke-width="8" stroke-linejoin="round"
+                                                    stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700" />
+
+                                            </svg>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="section flex items-center justify-center relative text-white">
+            <div class="w-screen md:h-screen relative">
+                <div class="h-full w-full md:grid md:grid-cols-6">
+                    <div
+                        class="col-span-1 relative w-full md:h-full md:bg-indigo-200 max-w-screen overflow-hidden pl-8 pt-10 md:pl-8 md:pt-10">
+                        <h2 id="luxuryText"
+                            class="md:absolute text-3xl md:text-6xl cinzel font-extrabold! text-orange-500 md:-rotate-90 w-[600px] md:top-[40%] md:-left-[140px]">
+                            SỐNG NĂNG LƯỢNG</h2>
+                    </div>
+                    <div
+                        class="col-span-2 w-full md:h-full mdflex flex-col justify-between items-center relative custom-grid">
+                        <div
+                            class=" mt-12 md:mt-72 mx-auto max-w-sm relative shadow-[0_0_20px_rgba(255,255,255,0.15)] backdrop-blur-md animate-glow">
+                            <div class="px-4 py-4">
+                                <h2 class="text-3xl md:text-5xl cinzel text-orange-500"></h2>
+                                <br>
+                                <div class="text-sm cinzel font-light">
+                                    Được kiến tạo trên nền tảng <span class="text-orange-500 text-lg">"tọa độ năng
+                                        lượng"</span>, tọa lạc ngay vùng lõi siêu đô thị
+                                    tỷ đô
+                                    TP. Hồ Chí Minh, mang đến một không gian sống phồn vinh tràn đầy
+                                    sinh
+                                    khí.
+                                    <br>
+                                    Để dù ở bất kỳ phiên bản nào của chính mình, bạn vẫn luôn biết ơn vì đã chọn SỐNG
+                                    NĂNG
+                                    LƯỢNG, chọn <span class="text-orange-500 text-xl"></span>!
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-span-3 h-full overflow-hidden">
+                        <div class="w-full h-full bg-cover"
+                            style="background-image: url(diamond-boulevard.jpg);background-position: 70%,100%;">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="section flex items-center justify-center relative">
+            <div class="relative w-screen h-[40vh] md:h-screen overflow-hidden">
+                <!-- Poster Image -->
+                <img id="poster" src="diamond-boulevard.jpg" alt="Video Poster"
+                    class="absolute top-0 left-0 w-full h-full object-cover brightness-90 transition-all duration-1000 ease-out" />
+
+                <!-- Video -->
+                <video id="bgVideo" src="assets/video.mp4" playsinline
+                    class="absolute top-0 left-0 w-full h-full object-cover opacity-0 scale-105 transition-all duration-1000 ease-out"></video>
+
+                <!-- Play Button -->
+                <button id="playBtn"
+                    class="absolute inset-0 flex items-center justify-center text-white bg-black/40 backdrop-blur-sm hover:bg-black/60 transition-all duration-300">
+                    <div
+                        class="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center hover:scale-110 transition-transform duration-300 relative overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                        <div class="absolute inset-0 animate-ping bg-white/20 rounded-full"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="w-8 h-8 ml-1">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] animate-[shine_2s_linear_infinite]"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+
+
+        <div class="section bg-gray-100">
+            <div class="w-screen md:h-screen relative py-12 overflow-hidden">
+                <div class="grid grid-cols-2 pb-12 pl-8 md:pl-24">
+                    <div class="border-b-[1px] border-gray-400">
+                        <h2 class="text-3xl md:text-5xl font-bold cinzel mb-1 uppercase text-orange-500">
+                            THE ASPIRA
+                        </h2>
+                    </div>
+                    <div>
+                        <div class="flex justify-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-orange-500 w-14 h-14"
+                                viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-span-2">
+
+                        <div class="text-black text-xs cinzel font-light!">
+                            Được kiến tạo trên nền tảng <span class="text-orange-500 text-lg">"tọa độ năng
+                                lượng"</span>
+                            <br>
+                            tọa lạc ngay vùng lõi siêu đô thị tỷ đô
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-auto text-white cinzel dark:text-gray-800 py-6   ">
+                    <!-- Splide Carousel -->
+                    <div id="luxury-splide" class="splide md:pl-24">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+
+                                <!-- Slide 1 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Politics</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">04</span>
+                                                <span class="leading-none uppercase">Aug</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Autem sunt tempora mollitia magnam non voluptates
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                                <!-- Slide 2 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Health</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">01</span>
+                                                <span class="leading-none uppercase">Aug</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Inventore reiciendis aliquam excepturi
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                                <!-- Slide 3 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Science</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">28</span>
+                                                <span class="leading-none uppercase">Jul</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Officiis mollitia dignissimos commodi optio vero animi
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                                <!-- Slide 4 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Sports</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">19</span>
+                                                <span class="leading-none uppercase">Jul</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Doloribus sit illo necessitatibus architecto exercitationem enim
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- Custom Arrows -->
+                        <div class="splide__arrows absolute bottom-4 right-12 flex gap-3 z-10">
+                            <div class="relative -bottom-16 flex justify-end w-full">
+                                <div class="w-44">
+                                    <button
+                                        class="splide__arrow splide__arrow--prev w-44 h-44 flex items-center justify-center rounded-none! border border-[#ff6900]! bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300"
+                                        aria-label="Previous">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff6900"
+                                            stroke="white" stroke-width="1"
+                                            class="w-10! h-10! rotate-180 fill-[#ff6900]!">
+                                            <path d="M15 18L9 12L15 6" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="splide__arrow splide__arrow--next w-44 h-44 flex items-center justify-center rounded-none! border border-[#ff6900]! bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300"
+                                        aria-label="Next">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff6900"
+                                            stroke="white" stroke-width="1" class="w-10! h-10! fill-[#ff6900]!">
+                                            <path d="M9 6L15 12L9 18" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="splide__pagination mt-6"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+                <div class="section bg-gray-100">
+            <div class="w-screen md:h-screen relative py-12 overflow-hidden">
+                <div class="grid grid-cols-2 pb-12 pl-8 md:pl-24">
+                    <div class="border-b-[1px] border-gray-400">
+                        <h2 class="text-3xl md:text-5xl font-bold cinzel mb-1 uppercase text-orange-500">
+                            THE ASPIRA
+                        </h2>
+                    </div>
+                    <div>
+                        <div class="flex justify-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-orange-500 w-14 h-14"
+                                viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-span-2">
+
+                        <div class="text-black text-xs cinzel font-light!">
+                            Được kiến tạo trên nền tảng <span class="text-orange-500 text-lg">"tọa độ năng
+                                lượng"</span>
+                            <br>
+                            tọa lạc ngay vùng lõi siêu đô thị tỷ đô
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-auto text-white cinzel dark:text-gray-800 py-6   ">
+                    <!-- Splide Carousel -->
+                    <div id="luxury-splide-build" class="splide md:pl-24">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+
+                                <!-- Slide 1 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Politics</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">04</span>
+                                                <span class="leading-none uppercase">Aug</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Autem sunt tempora mollitia magnam non voluptates
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                                <!-- Slide 2 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Health</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">01</span>
+                                                <span class="leading-none uppercase">Aug</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Inventore reiciendis aliquam excepturi
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                                <!-- Slide 3 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Science</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">28</span>
+                                                <span class="leading-none uppercase">Jul</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Officiis mollitia dignissimos commodi optio vero animi
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                                <!-- Slide 4 -->
+                                <li class="splide__slide">
+                                    <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
+                                        style="background-image: url('diamond-boulevard.jpg');">
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/80">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+                                            <a href="#"
+                                                class="px-3 py-2 text-xs font-semibold tracking-wider uppercase bg-violet-600 text-white">Sports</a>
+                                            <div class="flex flex-col justify-start text-center text-gray-800">
+                                                <span
+                                                    class="text-3xl font-semibold leading-none tracking-wide">19</span>
+                                                <span class="leading-none uppercase">Jul</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="z-10 p-5">
+                                            <a href="#" class="font-medium text-md hover:underline text-gray-800">
+                                                Doloribus sit illo necessitatibus architecto exercitationem enim
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- Custom Arrows -->
+                        <div class="splide__arrows absolute bottom-4 right-12 flex gap-3 z-10">
+                            <div class="relative -bottom-16 flex justify-end w-full">
+                                <div class="w-44">
+                                    <button
+                                        class="splide__arrow splide__arrow--prev w-44 h-44 flex items-center justify-center rounded-none! border border-[#ff6900]! bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300"
+                                        aria-label="Previous">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff6900"
+                                            stroke="white" stroke-width="1"
+                                            class="w-10! h-10! rotate-180 fill-[#ff6900]!">
+                                            <path d="M15 18L9 12L15 6" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="splide__arrow splide__arrow--next w-44 h-44 flex items-center justify-center rounded-none! border border-[#ff6900]! bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300"
+                                        aria-label="Next">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff6900"
+                                            stroke="white" stroke-width="1" class="w-10! h-10! fill-[#ff6900]!">
+                                            <path d="M9 6L15 12L9 18" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="splide__pagination mt-6"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="w-screen md:h-screen overflow-hidden">
+
+                <div class="py-12 md:py-0 flex flex-col gap-12 md:gap-0 md:grid grid-cols-1 md:grid-cols-2 h-full">
+                    <div class="w-full h-full flex flex-col justify-center">
+                        <div
+                            class="max-w-lg mx-auto text-black text-shadow-2xs p-8 rounded-lg shadow-lg bg-gray-100 w-full relative py-4 px-8">
+                            <div
+                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                            </div>
+                            <div
+                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                            </div>
+                            <h1 class="text-xl md:text-2xl cinzel font-bold mb-6 text-center">
+                                CÔNG TY CỔ PHẦN DXMD VIỆT NAM
+                            </h1>
+                            <ul class="space-y-3 text-sm list-item list-inside">
+                                <li>Trụ sở chính: 88/10 Đại Lộ Bình Dương, Phường Lái Thiêu, TP.Thuận An, Tỉnh Bình
+                                    Dương</li>
+                                <li>VP. TPHCM: 456 Xô Viết Nghệ Tĩnh, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</li>
+                                <li>Hotline: <a href="tel:0965355355"
+                                        class="underline hover:text-orange-400">0965.355.355</a></li>
+                                <li>Email: <a href="mailto:info@atskygarden.vn"
+                                        class="underline hover:text-orange-400">info@atskygarden.vn</a></li>
+                                <li>Website: <a href="https://atskygarden.vn"
+                                        class="underline hover:text-orange-400">atskygarden.vn</a></li>
+                                <li>Chính sách bảo mật</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="h-full flex flex-col justify-center items-center">
+                        <div class="w-full max-w-xl text-black space-y-4 bg-gray-100  relative py-4 px-8">
+                            <div
+                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                            </div>
+                            <div
+                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                            </div>
+                            <h2 class="text-2xl font-semibold tracking-wide text-orange-    ">
+                                LIÊN HỆ
+                            </h2>
+
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-500">
+                                    📞
+                                </span>
+                                <p>0965.355.355</p>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-500">
+                                    ✉️
+                                </span>
+                                <p>info@atskygarden.vn</p>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-500">
+                                    🔗
+                                </span>
+                                <p>www.atskygarden.vn</p>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-500">
+                                    📍
+                                </span>
+                                <p>
+                                    Số 54C đường Cách Mạng Tháng Tám,
+                                    Khu phố Hòa Long, phường Lái Thiêu,
+                                    thành phố Thuận An, tỉnh Bình Dương
+                                </p>
+                            </div>
+
+                            <!-- Form -->
+                            <form class="space-y-4 pt-2">
+                                <input type="text" placeholder="Họ và tên*"
+                                    class="w-full bg-transparent border border-black/50 rounded-sm px-5 py-3 outline-none focus:border-black" />
+
+                                <input type="text" placeholder="Số điện thoại*"
+                                    class="w-full bg-transparent border border-black/50 rounded-sm px-5 py-3 outline-none focus:border-black" />
+
+                                <input type="email" placeholder="Email*"
+                                    class="w-full bg-transparent border border-black/50 rounded-sm px-5 py-3 outline-none focus:border-black" />
+
+                                <button type="submit"
+                                    class="w-full bg-white text-orange-500 font-semibold rounded-sm py-3 hover:bg-orange-500 hover:text-white transition">
+                                    ĐĂNG KÍ NGAY
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="custom-nav" class="hidden  fixed top-1/2 left-4 -translate-y-1/2 md:flex flex-col items-start z-[100]">
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="1">
+            <span class="text-md w-[30px] text-right">01</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">
+                Giới thiệu
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="2">
+            <span class="text-md w-[30px] text-right">02</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Vị trí
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="3">
+            <span class="text-md w-[30px] text-right">03</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Mặt bằng
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="4">
+            <span class="text-md w-[30px] text-right">04</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Thiết kế
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="5">
+            <span class="text-md w-[30px] text-right">05</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Giá bán
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="6">
+            <span class="text-md w-[30px] text-right">06</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Tiện ích
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="7">
+            <span class="text-md w-[30px] text-right">07</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Tiện ích
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="8">
+            <span class="text-md w-[30px] text-right">08</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Tiện ích
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="9">
+            <span class="text-md w-[30px] text-right">09</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Tiện ích
+            </div>
+        </div>
+
+        <div class="nav-item group flex items-center text-gray-400 font-medium font-[Poppins] my-2 cursor-pointer transition-all duration-300"
+            data-index="10">
+            <span class="text-md w-[30px] text-right">10</span>
+            <div class="nav-label text-sm text-orange-500 opacity-0 translate-x-2 transition-all duration-300">Tiện ích
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="sidebar"
+        class="fixed top-0 right-0 w-96 h-full bg-white text-gray-900 shadow-lg transform translate-x-full transition-transform duration-500 ease-in-out z-[999]">
+        <div class="px-4 py-2 flex justify-between items-center border-b">
+            <button id="closeSidebar"
+                class="text-xl font-bold text-black hover:rotate-90 hover:text-red-600 transition-transform duration-200 ease-linear">✕</button>
+            <h2 class="text-xl font-bold font-sans">Thông tin chi tiết</h2>
+        </div>
+        <div class="p-4 space-y-2">
+            <table class="w-full table-fixed text-sm">
+                <tbody class="divide-y divide-slate-700 font-sans">
+                    <tr class="align-top">
+                        <th class="w-1/3 text-left pr-4 py-3 font-medium">Tên khu vực</th>
+                        <td class="py-3">Khu A</td>
+                    </tr>
+
+                    <tr class="align-top">
+                        <th class="text-left pr-4 py-3 font-medium">Tọa độ</th>
+                        <td class="py-3">
+                            <div>
+                                500,909 → 821,912 → 817,1304 → 500,1300
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="align-top">
+                        <th class="text-left pr-4 py-3 font-medium">Mô tả</th>
+                        <td class="py-3">
+                            Đây là khu vực thử nghiệm trong bản đồ SVG.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="tooltip"
+        class="absolute hidden px-3 py-2 bg-black/90 text-white border-[1px] border-white/20 text-sm rounded-sm shadow-lg pointer-events-none z-50">
+        Khu vực A - thông tin tóm tắt
+    </div>
+
+
+
+
+    <div class="fixed top-2 left-2 z-[999]" id="menuBtn">
+        <button class="menu">
+            <svg viewBox="0 0 64 48">
+                <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+                <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+                <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div id="menuOverlay"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none z-[998] transition-opacity duration-500">
+    </div>
+
+    <!-- Menu Panel -->
+    <div id="menuPanel"
+        class="fixed top-0 left-0 h-full w-full bg-[#002d4d]/40 backdrop-blur-md text-white shadow-2xl translate-x-[-100%] z-[999]">
+        <div class="grid grid-cols-1 md:grid-cols-3 text-center md:text-left">
+            <div class="col-span-2 uppercase px-8 md:px-20 py-8 md:space-y-4 text-4xl md:text-6xl flex flex-col gap-2 md:gap-3 font-bold">
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Trang chủ
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Thông tin
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Vị trí
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Mặt bằng tầng
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Tiện ích
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Thư viện
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+
+                <a href="#" class="block hover:text-blue-400 group transition">
+                    <div class="flex">
+                        <div class="w-1/5">
+                            <div class="w-10 h-10 md:w-20 md:h-20">
+                                <img src="assets/general.svg" class="w-full h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                            </div>
+                        </div>
+                        Tin tức
+                    </div>
+                    <div class="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-150 ease-linear mt-1">
+
+                    </div>
+                </a>
+            </div>
+            <div class="py-8 md:py-12">
+                <div class="mx-auto w-72 md:w-[500px] md:h-[500px] cursor-pointer" id="logoContainer">
+                    <svg id="logoSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 566.93 566.93"
+                        class="w-full h-full">
+                        <defs>
+                            <linearGradient id="linear-gradient" x1="283.46" y1="561.49" x2="283.46" y2="5.44"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#cea132" />
+                                <stop offset=".39" stop-color="#f9f17e" />
+                                <stop offset=".7" stop-color="#cc9e2c" />
+                                <stop offset="1" stop-color="#fdeb66" />
+                            </linearGradient>
+                            <style>
+                                .st0 {
+                                    fill: url(#linear-gradient);
+                                }
+                            </style>
+                        </defs>
+                        <g id="logoPaths" xmlns="http://www.w3.org/2000/svg">
+                            <path class="st0"
+                                d="M80.79,383.84h31.93l14.95,14.78v68.7l-14.95,14.85h-31.93v-98.33ZM107.62,470.22l7.9-7.78v-59l-7.9-7.58h-14.69v74.36h14.69Z" />
+                            <path class="st0" d="M143.39,482.17v-98.72h12.15v98.72h-12.15Z" />
+                            <path class="st0"
+                                d="M179.43,383.58h23.57l14.82,98.59h-12.28l-3.92-25.64h-20.83l-3.92,25.64h-12.28l14.82-98.59ZM192.42,395.54h-2.55l-7.38,48.97h17.43l-7.51-48.97Z" />
+                            <path class="st0"
+                                d="M282.39,395.28h-1.44l-12.21,78.47h-15.48l-12.21-78.47h-1.44v86.76h-12.15v-98.46h23.9l5.75,38.56,3.79,34.38h.39l3.59-33.87,5.75-39.08h23.96v98.46h-12.21v-86.76Z" />
+                            <path class="st0"
+                                d="M359.17,466.75l-15.08,15.81h-19.26l-15.02-15.81v-69.6l15.15-14.85h19.13l15.08,14.85v69.6ZM347.02,462.18v-60.16l-8.03-7.91h-9.08l-8.03,7.91v60.16l8.16,8.55h8.82l8.16-8.55Z" />
+                            <path class="st0"
+                                d="M374.76,383.84h16.46l11.36,35.28,10.32,36.83h.39l-2.29-37.47v-34.64h12.21v98.33h-12.99l-15.61-48.46-8.75-29.05h-.39l1.5,30.14v47.37h-12.21v-98.33Z" />
+                            <path class="st0"
+                                d="M439.26,383.84h31.93l14.95,14.78v68.7l-14.95,14.85h-31.93v-98.33ZM466.1,470.22l7.9-7.78v-59l-7.9-7.58h-14.69v74.36h14.69Z" />
+                            <path class="st0"
+                                d="M111.24,495.51h19.59l10.01,9.94v16.02l-4.92,5.78,6.7,6.51v17.57l-10.01,9.81h-21.37v-65.64ZM127.92,523.87l4.7-5.53v-9.6l-5.14-5.06h-8.05v20.18h8.49ZM119.43,553.09h9.84l5.14-5.1v-10.54l-5.7-5.53h-9.27v21.17Z" />
+                            <path class="st0"
+                                d="M185.5,550.86l-10.06,10.54h-12.84l-10.01-10.54v-46.4l10.1-9.9h12.75l10.06,9.9v46.4ZM177.4,547.82v-40.1l-5.35-5.27h-6.05l-5.35,5.27v40.1l5.44,5.7h5.88l5.44-5.7Z" />
+                            <path class="st0"
+                                d="M204.3,495.33v52.66l5.09,5.53h5.35l5.05-5.53v-52.66h8.14v55.61l-9.53,10.54h-12.58l-9.62-10.54v-55.61h8.1Z" />
+                            <path class="st0" d="M246.47,495.42v58.1h20.16v7.63h-28.25v-65.73h8.1Z" />
+                            <path class="st0"
+                                d="M297.22,524.64v7.97h-16.15v20.57h20.5v7.97h-28.6v-65.73h27.34v7.97h-19.24v21.25h16.15Z" />
+                            <path class="st0"
+                                d="M330.34,561.49h-15.85l-10.01-66.15h8.31l8.75,58.18h1.87l8.88-58.18h8.23l-10.19,66.15Z" />
+                            <path class="st0"
+                                d="M352.62,495.42h15.71l9.88,65.73h-8.18l-2.61-17.1h-13.89l-2.61,17.1h-8.18l9.88-65.73ZM361.28,503.39h-1.7l-4.92,32.65h11.62l-5.01-32.65Z" />
+                            <path class="st0"
+                                d="M392.75,561.14h-8.1v-65.73h19.59l10.27,10.2v22.71l-7.23,7.63,11.84,25.19h-8.92l-10.4-22.11h-7.05v22.11ZM392.75,531.07h8.1l5.53-5.91v-16.32l-5.44-5.36h-8.18v27.59Z" />
+                            <path class="st0"
+                                d="M424.6,495.59h21.29l9.97,9.85v45.8l-9.97,9.9h-21.29v-65.55ZM442.5,553.17l5.27-5.18v-39.33l-5.27-5.06h-9.79v49.57h9.79Z" />
+                        </g>
+                        <path xmlns="http://www.w3.org/2000/svg" class="st0"
+                            d="M432.89,139.89L281.4,5.44l-104.41,92.67,14.82,13.16,89.58-79.51,121.84,108.14-24.38,21.64-97.45-86.5-97.45,86.5-24.38-21.64-14.82-13.16-14.82,13.16,39.21,34.8-39.21,34.8,151.48,134.45,104.41-92.67-14.82-13.16-89.58,79.51-121.84-108.14,24.38-21.64,97.45,86.5,97.45-86.5,6.15,5.46,33.06,29.34,14.82-13.16-39.21-34.8,39.21-34.8ZM320.81,213.06l-37.64-95.12h-.35l29.23,102.9-.2.18-22.57,20.03-7.65-123.11h-.45l-7.65,123.11h0s0,0,0,0l-22.57-20.03-.2-.18,29.23-102.9h-.35l-37.64,95.12-43.22-38.36,82.63-73.34,82.63,73.34-43.22,38.37Z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgAudio" preload="auto">
+        <!-- <source src="assets/videoplayback.mp3" type="audio/mpeg"> -->
+        Trình duyệt không hỗ trợ thẻ audio.
+    </audio>
+
+
+    <script>
+        (function () {
+            const audio = document.getElementById('bgAudio');
+
+            // cấu hình mặc định
+            audio.loop = true;          // lặp lại
+            audio.volume = 0.7;         // 0.0 - 1.0
+            audio.preload = 'auto';
+
+            // Play/pause khi click ở bất kỳ đâu trên body (user gesture)
+            document.addEventListener('click', async () => {
+                try {
+                    if (audio.paused) {
+                        await audio.play();
+                    } else {
+                        // audio.pause();
+                    }
+                } catch (err) {
+                    console.warn('Không thể play:', err);
+                }
+            }, { once: false });
+
+            // fallback: nếu người dùng nhấn phím space để chơi / pause
+            window.addEventListener('keydown', async (ev) => {
+                if (ev.code === 'Space') {
+                    ev.preventDefault();
+                    try {
+                        if (audio.paused) await audio.play();
+                        // else audio.pause();
+                    } catch (err) { console.warn(err); }
+                }
+            });
+
+        })();
+    </script>
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.9/fullpage.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+
+    <script>
+
+        const videoEl = document.getElementById("myVideo");
+        const width = window.innerWidth;
+
+        if (width > 1260) {
+            new fullpage("#fullpage", {
+                autoScrolling: true,
+                navigation: true,
+                scrollingSpeed: 800,
+                navigation: false,
+                showActiveTooltip: false,
+                slidesNavigation: false,
+                licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
+                onLeave: function (origin, destination, direction) {
+                    if (destination.index === 0) videoEl.play();
+                    gsap.set(".section [data-animate]", { opacity: 0, y: 50 });
+                    // gsap.to(destination.item.querySelectorAll("[data-animate]"), {
+                    //     opacity: 1,
+                    //     y: 0,
+                    //     duration: 1,
+                    //     ease: "power2.out",
+                    //     stagger: 0.2
+                    // });
+                    updateNav(destination.index + 1);
+                },
+            });
+
+            function updateNav(activeIndex) {
+                document.querySelectorAll(".nav-item").forEach((item, index) => {
+                    item.classList.toggle("active", index + 1 === activeIndex);
+                });
+            }
+
+            // Click event to navigate
+            document.querySelectorAll(".nav-item").forEach((item) => {
+                item.addEventListener("click", () => {
+                    const index = parseInt(item.getAttribute("data-index"));
+                    fullpage_api.moveTo(index);
+                    updateNav(index);
+                });
+            });
+
+            updateNav(1);
+        }
+    </script>
+
+
+    <script>
+        const video = document.getElementById("bgVideo");
+        const poster = document.getElementById("poster");
+        const playBtn = document.getElementById("playBtn");
+
+        playBtn.addEventListener("click", () => {
+            video.play();
+            gsap.to(playBtn, { scale: 0, opacity: 0, duration: 0.8, ease: "power2.inOut" });
+            gsap.to(poster, { opacity: 0, duration: 1.2, ease: "power2.out" });
+            gsap.to(video, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out", delay: 0.2 });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const init = new Splide('#luxury-carousel', {
+                type: 'fade',          // hiệu ứng mờ dần
+                rewind: true,          // quay lại đầu
+                autoplay: true,        // tự chạy
+                interval: 4000,        // delay giữa các slide
+                speed: 1000,           // tốc độ chuyển slide
+                pauseOnHover: false,
+                arrows: true,
+                pagination: true,
+            }).mount();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const initTwo = new Splide("#luxury-splide", {
+                type: "loop",
+                perPage: 5,
+                gap: "1rem",
+                autoplay: true,
+                interval: 3000,
+                speed: 900,
+                pauseOnHover: true,
+                pagination: true,
+                arrows: true,
+                breakpoints: {
+                    1280: { perPage: 4 },
+                    1024: { perPage: 3 },
+                    768: { perPage: 2 },
+                    480: { perPage: 1 },
+                },
+            }).mount();
+
+               const inits = new Splide("#luxury-splide-build", {
+                type: "loop",
+                perPage: 5,
+                gap: "1rem",
+                autoplay: true,
+                interval: 3000,
+                speed: 900,
+                pauseOnHover: true,
+                pagination: true,
+                arrows: true,
+                breakpoints: {
+                    1280: { perPage: 4 },
+                    1024: { perPage: 3 },
+                    768: { perPage: 2 },
+                    480: { perPage: 1 },
+                },
+            }).mount();
+        });
+    </script>
+
+    <script>
+        gsap.registerPlugin(SplitText);
+        var splitText = new SplitText('#luxuryText', { type: 'chars' });
+
+        const tl = gsap.timeline({
+            repeat: -1,
+            repeatDelay: 0.5
+        });
+
+
+        tl
+            .from(splitText.chars, { duration: .5, opacity: 0, stagger: .125, ease: 'power1. In' })
+            .to(splitText.chars, { duration: .25, opacity: 0, stagger: .125, ease: 'power3. inOut' }, '+=3');
+
+    </script>
+
+    <script>
+        const btn = document.getElementById("xemThemBtn");
+        const left = document.getElementById("infoLeft");
+        const right = document.getElementById("infoRight");
+        let isVisible = false;
+
+        gsap.set([left, right], { opacity: 0, x: 0 });
+
+        btn.addEventListener("click", () => {
+            if (!isVisible) {
+                // Hiện ra từ 2 bên
+                const appearLeft = gsap.fromTo(left,
+                    { opacity: 0, x: -100 },
+                    { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
+                );
+                const appearRight = gsap.fromTo(right,
+                    { opacity: 0, x: 100 },
+                    { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.1 }
+                );
+            } else {
+                // Ẩn đi
+                gsap.to(left, { opacity: 0, x: -100, duration: 0.8, ease: "power2.in" });
+                gsap.to(right, { opacity: 0, x: 100, duration: 0.8, ease: "power2.in" });
+            }
+            isVisible = !isVisible;
+        });
+    </script>
+
+
+
+    <script>
+        const polygon = document.querySelectorAll('.areaPolygon');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('closeSidebar');
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+        });
+
+        const tooltip = document.getElementById('tooltip');
+
+
+
+        polygon.forEach((el) => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                sidebar.classList.remove('translate-x-full');
+            });
+        });
+
+        // Khi di chuột vào polygon
+        polygon.forEach((el) => {
+            el.addEventListener('mouseenter', () => {
+                tooltip.classList.remove('hidden');
+            });
+        });
+
+        // Khi di chuột ra ngoài polygon
+        polygon.forEach((el) => {
+            el.addEventListener('mouseleave', () => {
+                tooltip.classList.add('hidden');
+            });
+        });
+
+        // Khi di chuyển chuột trong polygon
+        polygon.forEach((el) => {
+            el.addEventListener('mousemove', (e) => {
+                const offsetX = 15; // cách con trỏ một chút
+                const offsetY = 15;
+                tooltip.style.left = e.pageX + offsetX + 'px';
+                tooltip.style.top = e.pageY + offsetY + 'px';
+            });
+        });
+    </script>
+
+    <script>
+
+    </script>
+
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const menuPanel = document.getElementById('menuPanel');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuItems = document.querySelectorAll('#menuItems a');
+        const logo = document.getElementById('logoSVG');
+        const logoPaths = logo.querySelectorAll('path');
+
+        let isOpen = false;
+
+        // Chuẩn bị các path để vẽ
+        logoPaths.forEach(path => {
+            const length = path.getTotalLength();
+            path.style.stroke = "#f8e48c";
+            path.style.fill = "none";
+            path.style.strokeWidth = "2";
+            path.style.strokeDasharray = length;
+            path.style.strokeDashoffset = length;
+            path.style.opacity = 0.8;
+        });
+
+        // Timeline animation cho logo
+        const logoTL = gsap.timeline({ paused: true });
+
+        logoTL
+            .to("#logoSVG", {
+                scale: 1.1,
+                transformOrigin: "center",
+                duration: 0.8,
+                ease: "power2.out"
+            })
+            .to(logoPaths, {
+                strokeDashoffset: 0,
+                stagger: 0.02,
+                duration: 1.2,
+                ease: "power3.out"
+            }, "-=0.3")
+            .to(logoPaths, {
+                fill: "url(#linear-gradient)",
+                stroke: "none",
+                duration: 0.8,
+                stagger: 0.03
+            }, "-=0.4");
+
+        // Timeline GSAP
+        const tlMenu = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+        // Hiệu ứng mở menu
+        tlMenu.to(menuPanel, { x: 0, duration: 0.6 })
+            .to(menuOverlay, { opacity: 1, pointerEvents: "auto", duration: 0.4 }, "-=0.4")
+            .to(menuItems, {
+                opacity: 1,
+                x: 0,
+                stagger: 0.2, 
+                duration: 0.4
+            }, "-=0.2");
+
+
+        document.querySelectorAll('.menu').forEach(btn => {
+            btn.addEventListener('click', e => {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    tlMenu.play();
+                    logoTL.play();
+                } else {
+                    tlMenu.reverse();
+                    logoTL.reverse();
+                }
+                
+                btn.classList.toggle('active');
+            });
+        });
+
+        // Click overlay để đóng
+        menuOverlay.addEventListener('click', () => {
+            isOpen = false;
+            tlMenu.reverse();
+            if (!isOpen) {
+                document.querySelectorAll('.menu').forEach(btn => {
+                    btn.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

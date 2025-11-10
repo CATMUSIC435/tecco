@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Material-like Button with Ripple</title>
+    <style>
+        :root {
+            --btn-bg: #6200ee;
+            /* background */
+            --btn-color: #fff;
+            /* text color */
+            --btn-radius: 12px;
+            /* border radius */
+            --btn-padding: 12px 20px;
+            --btn-font-size: 16px;
+            --btn-elevation: 0 6px 18px rgba(98, 0, 238, 0.25);
+            --ripple-color: rgba(255, 255, 255, 0.35);
+            --ripple-scale: 3.5;
+            --transition: 180ms cubic-bezier(.2, .8, .2, 1);
+        }
+
+        /* Container to demo multiple states */
+        body {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: #f5f7fb;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            padding: 24px;
+        }
+
+        /* Material-like button */
+        .md-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: var(--btn-padding);
+            border-radius: var(--btn-radius);
+            background: var(--btn-bg);
+            color: var(--btn-color);
+            font-size: var(--btn-font-size);
+            font-weight: 600;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            box-shadow: var(--btn-elevation);
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 120ms ease, box-shadow var(--transition), opacity var(--transition);
+            overflow: hidden;
+            /* keep ripple inside */
+        }
+
+        .md-btn:active {
+            transform: translateY(1px) scale(.995);
+        }
+
+        .md-btn:focus {
+            box-shadow: 0 8px 26px rgba(98, 0, 238, 0.18);
+        }
+
+        /* Optional icon styling */
+        .md-btn svg {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.06));
+        }
+
+        /* Ripple element */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+            will-change: transform, opacity;
+            background: var(--ripple-color);
+            width: 8px;
+            height: 8px;
+            opacity: 0.9;
+            animation: ripple-grow 520ms cubic-bezier(.2, .8, .2, 1);
+        }
+
+        @keyframes ripple-grow {
+            to {
+                transform: translate(-50%, -50%) scale(var(--ripple-scale));
+                opacity: 0;
+            }
+        }
+
+        /* Variants */
+        .md-btn.raised {
+            background: linear-gradient(180deg, #6b00ff, #4a00c8);
+        }
+
+        .md-btn.ghost {
+            background: transparent;
+            color: #333;
+            box-shadow: none;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .md-btn.small {
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="md-btn" id="primaryBtn" aria-pressed="false">
+        <!-- optional icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2 2 7l10 5 10-5-10-5zm0 7.5L4.5 7 12 3.5 19.5 7 12 9.5zM2 17l10 5 10-5v-2l-10 5-10-5v2z">
+            </path>
+        </svg>
+        Thực hiện
+    </button>
+
+    <button class="md-btn" aria-pressed="false">
+        <!-- optional icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2 2 7l10 5 10-5-10-5zm0 7.5L4.5 7 12 3.5 19.5 7 12 9.5zM2 17l10 5 10-5v-2l-10 5-10-5v2z">
+            </path>
+        </svg>
+        Thực hiện
+    </button>
+
+    <button class="md-btn ghost" id="ghostBtn">Tùy chọn</button>
+
+    <script>
+        // Universal ripple function
+        function createRipple(event, el, opts = {}) {
+            const rect = el.getBoundingClientRect();
+            let x, y;
+
+            // If triggered by keyboard (enter/space) center ripple
+            if (event.type === 'keydown') {
+                x = rect.width / 2;
+                y = rect.height / 2;
+            } else {
+                // Mouse or touch
+                const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+                const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+                x = clientX - rect.left;
+                y = clientY - rect.top;
+            }
+
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            // Customize ripple size based on bigger side
+            const maxDim = Math.max(rect.width, rect.height);
+            const size = Math.max(8, maxDim * 0.12);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            // allow CSS variable override from JS (scale)
+            if (opts.scale) ripple.style.setProperty('--ripple-scale', opts.scale);
+
+            el.appendChild(ripple);
+
+            // Remove after animation
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            }, { once: true });
+
+            // Safety remove in case animationend doesn't fire
+            setTimeout(() => ripple.remove(), 800);
+        }
+
+        // Attach handlers to all buttons with class .md-btn
+        document.querySelectorAll('.md-btn').forEach(btn => {
+            // pointer events
+            btn.addEventListener('pointerdown', (e) => {
+                // only primary button or touch
+                if (e.button === 0 || e.pointerType === 'touch') {
+                    createRipple(e, btn, { scale: 3.8 });
+                }
+            });
+
+            // keyboard support: Enter or Space
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    // prevent scrolling on space
+                    if (e.key === ' ') e.preventDefault();
+                    createRipple(e, btn, { scale: 3.2 });
+                }
+            });
+
+            // Optional: accessibility hint toggling state
+            btn.addEventListener('click', () => {
+                // If it's a toggle-like button, toggle aria-pressed
+                if (btn.hasAttribute('aria-pressed')) {
+                    const now = btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true';
+                    btn.setAttribute('aria-pressed', now);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

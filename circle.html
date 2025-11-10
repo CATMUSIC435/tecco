@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @charset "utf-8";
+        /* CSS Document */
+
+        /******* Common Element CSS Start ******/
+        * {
+            margin: 0px;
+            padding: 0px;
+            outline: none;
+        }
+
+        body {
+            background-color: #3f5de1;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            -webkit-align-items: center;
+            height: 560px;
+            overflow: hidden;
+        }
+
+        .main {
+            margin: 0px auto;
+            width: 480px;
+            height: 480px;
+            position: relative;
+        }
+
+
+        .icon-block {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            border-radius: 50%;
+            z-index: 10;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            -webkit-align-items: center;
+            justify-content: center;
+            -webkit-justify-content: center;
+            background-image: linear-gradient(180deg, #4967e6 0%, #627bf4 100%);
+            -webkit-background-image: linear-gradient(180deg, #4967e6 0%, #627bf4 100%);
+            box-shadow: 0 2px 4px 0 #3e5ada;
+            -webkit-box-shadow: 0 2px 4px 0 #3e5ada;
+            top: 50%;
+            left: 50%;
+        }
+
+        .circle:first-child {
+            animation: circle-rotate 20s linear infinite;
+            -webkit-animation: circle-rotate 20s linear infinite;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            width: 100%;
+            height: 100%;
+            border: 3px solid #6495f2;
+            border-radius: 50%;
+        }
+
+        .circle:nth-child(2) {
+            animation: circle-rotate 30s linear infinite;
+            -webkit-animation: circle-rotate 30s linear infinite;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            width: 85%;
+            height: 85%;
+            border: 3px solid #6495f2;
+            border-radius: 50%;
+        }
+
+        .circle:nth-child(3) {
+            animation: circle-rotate 40s linear infinite;
+            -webkit-animation: circle-rotate 40s linear infinite;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            width: 70%;
+            height: 70%;
+            border: 3px solid #6495f2;
+            border-radius: 50%;
+        }
+
+        .circle:nth-child(4) {
+            animation: circle-rotate 50s linear infinite;
+            -webkit-animation: circle-rotate 50s linear infinite;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            width: 55%;
+            height: 55%;
+            border: 3px solid #6495f2;
+            border-radius: 50%;
+        }
+
+        .circle:nth-child(5) {
+            animation: circle-rotate 60s linear infinite;
+            -webkit-animation: circle-rotate 60s linear infinite;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            width: 40%;
+            height: 40%;
+            border: 3px solid #6495f2;
+            border-radius: 50%;
+        }
+
+        .circle:first-child .icon-block {
+            transform: translate(-50%, -50%) rotate(calc(90deg * var(--i))) translate(90px) rotate(calc(-60deg * var(--i)));
+        }
+
+        .circle:nth-child(2) .icon-block {
+            transform: translate(-50%, -50%) rotate(calc(60deg * var(--i))) translate(130px) rotate(calc(-60deg * var(--i)));
+        }
+
+        .circle:nth-child(3) .icon-block {
+            transform: translate(-50%, -50%) rotate(calc(45deg * var(--i))) translate(170px) rotate(calc(-60deg * var(--i)));
+        }
+
+        .circle:nth-child(4) .icon-block {
+            transform: translate(-50%, -50%) rotate(calc(36deg * var(--i))) translate(210px) rotate(calc(-60deg * var(--i)));
+        }
+
+        .circle:nth-child(5) .icon-block {
+            transform: translate(-50%, -50%) rotate(calc(30deg * var(--i))) translate(250px) rotate(calc(-60deg * var(--i)));
+        }
+
+
+
+        .circle:first-child .icon-block img {
+            margin: 0px auto;
+            width: 70%;
+            animation: Rotate-reverse 20s linear infinite;
+            -webkit-animation: Rotate-reverse 20s linear infinite;
+        }
+
+        .circle:nth-child(2) .icon-block img {
+            margin: 0px auto;
+            width: 70%;
+            animation: Rotate-reverse 30s linear infinite;
+            -webkit-animation: Rotate-reverse 30s linear infinite;
+        }
+
+
+        .circle:nth-child(3) img {
+            margin: 0px auto;
+            width: 70%;
+            animation: Rotate-reverse 40s linear infinite;
+            -webkit-animation: Rotate-reverse 40s linear infinite;
+        }
+
+
+        .circle:nth-child(4) img {
+            margin: 0px auto;
+            width: 70%;
+            animation: Rotate-reverse 50s linear infinite;
+            -webkit-animation: Rotate-reverse 50s linear infinite;
+        }
+
+
+
+        .circle:nth-child(5) img {
+            margin: 0px auto;
+            width: 70%;
+            animation: Rotate-reverse 60s linear infinite;
+            -webkit-animation: Rotate-reverse 60s linear infinite;
+        }
+
+
+        /* .circle .icon-block img {
+            animation: img-rotate 20s linear infinite;
+            -webkit-animation: img-rotate 20s linear infinite;
+        } */
+
+        /* center logo */
+        .center-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+
+        .center-logo img {
+            max-width: 200px;
+        }
+
+        /* keyframe animation */
+
+        @keyframes Rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes Rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes Rotate-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        @-webkit-keyframes Rotate-reverse {
+            from {
+                -webkit-transform: rotate(360deg);
+            }
+
+            to {
+                -webkit-transform: rotate(0deg);
+            }
+        }
+
+        @keyframes circle-rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(405deg);
+            }
+        }
+
+        @-webkit-keyframes circle-rotate {
+            from {
+                -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            to {
+                -webkit-transform: translate(-50%, -50%) rotate(405deg);
+            }
+        }
+
+        @keyframes img-rotate {
+            from {
+                transform: rotate(-45deg);
+            }
+
+            to {
+                transform: rotate(-405deg);
+            }
+        }
+
+        @-webkit-keyframes img-rotate {
+            from {
+                -webkit-transform: rotate(-45deg);
+            }
+
+            to {
+                -webkit-transform: rotate(-405deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main-container">
+        <div class="main">
+            <div class="circle">
+                <div style="position: relative;width: 100%;height: 100%;">
+                    <div class="icon-block" style="--i:0;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                            alt="web design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:1;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                            alt="game design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:2;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                            alt="game dev icon" />
+                    </div>
+                    <div class="icon-block" style="--i:3;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="circle">
+                <div style="position: relative;width: 100%;height: 100%;">
+                    <div class="icon-block" style="--i:0;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                            alt="web design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:1;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                            alt="game design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:2;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                            alt="game dev icon" />
+                    </div>
+                    <div class="icon-block" style="--i:3;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:4;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:5;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="circle">
+                <div style="position: relative;width: 100%;height: 100%;">
+                    <div class="icon-block" style="--i:0;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                            alt="web design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:1;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                            alt="game design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:2;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                            alt="game dev icon" />
+                    </div>
+                    <div class="icon-block" style="--i:3;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:4;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:5;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:6;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:7;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="circle">
+                <div style="position: relative;width: 100%;height: 100%;">
+                    <div class="icon-block" style="--i:0;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                            alt="web design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:1;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                            alt="game design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:2;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                            alt="game dev icon" />
+                    </div>
+                    <div class="icon-block" style="--i:3;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:4;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:5;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:6;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:7;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:8;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:9    ;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="circle">
+                <div style="position: relative;width: 100%;height: 100%;">
+                    <div class="icon-block" style="--i:0;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/web-dev-icon.png"
+                            alt="web design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:1;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-design-icon.png"
+                            alt="game design icon" />
+                    </div>
+                    <div class="icon-block" style="--i:2;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/game-dev-icon.png"
+                            alt="game dev icon" />
+                    </div>
+                    <div class="icon-block" style="--i:3;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:4;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+                    <div class="icon-block" style="--i:5;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:6;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:7;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:8;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:9;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:10;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                    <div class="icon-block" style="--i:11;">
+                        <img src="https://www.yudiz.com/codepen/animated-portfolio/ui-ux-icon.png" alt="ui-ux icon" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="center-logo">
+                <img src="https://www.yudiz.com/codepen/animated-portfolio/logo.png" alt="logo" />
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

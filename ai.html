@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chatbox với TensorFlow.js (USE)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- TensorFlow.js & Universal Sentence Encoder -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder@1.3.3/dist/universal-sentence-encoder.min.js"></script>
+
+    <style>
+        body {
+            font-family: Inter, system-ui, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-3xl bg-slate-800/60 backdrop-blur rounded-lg shadow-lg overflow-hidden">
+        <div class="p-4 border-b border-slate-700 flex items-center justify-between">
+            <h1 class="text-xl font-semibold">Chatbox (USE embedding)</h1>
+            <div id="status" class="text-sm text-slate-400">Loading model...</div>
+        </div>
+
+        <div id="chat" class="h-[60vh] overflow-y-auto p-4 space-y-3 bg-gradient-to-b from-slate-900/20 to-transparent">
+            <!-- messages -->
+        </div>
+
+        <div class="p-4 border-t border-slate-700">
+            <div class="flex gap-3">
+                <input id="msg"
+                    class="flex-1 bg-slate-800/60 border border-slate-700 rounded px-3 py-2 focus:outline-none"
+                    placeholder="Gõ câu hỏi..." />
+                <button id="send" class="px-4 py-2 rounded bg-emerald-500 hover:bg-emerald-600">Gửi</button>
+                <button id="trainAdd" class="px-3 py-2 rounded bg-sky-600 hover:bg-sky-700">Thêm vào KB</button>
+            </div>
+            <div class="text-xs text-slate-400 mt-2">Mô hình sử dụng <strong>Universal Sentence Encoder</strong>. Đây là
+                phương pháp retrieval (so sánh embedding) — phù hợp với FAQs, trợ giúp, chatbot đơn giản.</div>
+        </div>
+    </div>
+
+    <script>
+        (async () => {
+            const statusEl = document.getElementById('status');
+            const chatEl = document.getElementById('chat');
+            const input = document.getElementById('msg');
+            const sendBtn = document.getElementById('send');
+            const trainAddBtn = document.getElementById('trainAdd');
+
+            statusEl.textContent = 'Đang tải model USE...';
+            const model = await use.load();
+            statusEl.textContent = 'Model sẵn sàng ✅';
+
+            // --- Knowledge base mặc định (cặp câu hỏi -> đáp án) ---
+            // Bạn có thể thay bằng JSON tải từ server
+            // === Knowledge Base mở rộng: nhiều cách hỏi cho 1 câu trả lời ===
+            let KB = [
+                {
+                    q: ["xin chào", "chào bạn", "hi", "hello", "hey"],
+                    a: "Xin chào! Mình là chatbot học bằng TensorFlow.js."
+                },
+                {
+                    q: ["bạn là ai", "bạn tên gì", "tôi đang nói chuyện với ai", "ai đang trả lời tôi"],
+                    a: "Tôi là một chatbot học mẫu câu, không phải AI tổng hợp đâu nhé 😄."
+                },
+                {
+                    q: ["webassembly là gì", "wasm là gì", "giải thích webassembly", "công dụng của webassembly"],
+                    a: "WebAssembly (WASM) là mã nhị phân giúp code chạy nhanh trong trình duyệt — gần như native."
+                },
+                {
+                    q: ["tensorflow là gì", "tfjs là gì", "tensorflowjs dùng để làm gì"],
+                    a: "TensorFlow.js là thư viện học máy chạy trực tiếp trong trình duyệt bằng JavaScript."
+                },
+                {
+                    q: ["cảm ơn", "cảm ơn bạn", "thanks", "tks", "thank you"],
+                    a: "Rất vui được giúp bạn 😄!"
+                }
+            ];
+
+            // Tạo embedding cho KB (precompute)
+            let kbEmbeddings = [];
+            let kbAnswers = [];
+
+            async function computeKBEmbeddings() {
+                kbEmbeddings = [];
+                kbAnswers = [];
+                for (const item of KB) {
+                    for (const question of item.q) {
+                        const emb = await model.embed([question]);
+                        kbEmbeddings.push(emb);
+                        kbAnswers.push(item.a);
+                    }
+                }
+            }
+            await computeKBEmbeddings();
+
+            // helper: append message
+            function pushMessage(text, from = 'bot') {
+                const wrap = document.createElement('div');
+                wrap.className = from === 'bot' ? 'bg-slate-700/30 p-3 rounded max-w-[80%]' : 'ml-auto bg-emerald-600/20 p-3 rounded max-w-[80%]';
+                wrap.innerHTML = `<div class="text-sm">${escapeHtml(text)}</div>`;
+                chatEl.appendChild(wrap);
+                chatEl.scrollTop = chatEl.scrollHeight;
+            }
+
+            // helper escape
+            function escapeHtml(s) {
+                return s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+            }
+
+            async function findBestResponse(message) {
+                if (kbEmbeddings.length === 0) return null;
+                const inputEmb = await model.embed([message]);
+                let bestScore = -1;
+                let bestIdx = -1;
+
+                for (let i = 0; i < kbEmbeddings.length; i++) {
+                    const score = tf.tidy(() => {
+                        const a = kbEmbeddings[i];
+                        const dot = a.dot(inputEmb.transpose()).arraySync()[0][0];
+                        const normA = a.norm().arraySync();
+                        const normB = inputEmb.norm().arraySync();
+                        return dot / (normA * normB);
+                    });
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestIdx = i;
+                    }
+                }
+
+                inputEmb.dispose();
+                return { index: bestIdx, score: bestScore };
+            }
+
+            // default threshold
+            const THRESHOLD = 0.60;
+
+            async function handleUser(text) {
+                pushMessage(text, "user");
+                const res = await findBestResponse(text.toLowerCase());
+                if (!res || res.score < THRESHOLD) {
+                    pushMessage("Xin lỗi, mình chưa hiểu rõ câu này. Bạn có thể hỏi lại theo cách khác không?", "bot");
+                } else {
+                    pushMessage(kbAnswers[res.index], "bot");
+                }
+            }
+
+            // send on click / enter
+            sendBtn.onclick = async () => {
+                const t = input.value.trim();
+                if (!t) return;
+                input.value = '';
+                await handleUser(t);
+            };
+            input.addEventListener('keydown', async (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendBtn.click();
+                }
+            });
+
+            // Allow adding new KB entry (quick training)
+            trainAddBtn.onclick = async () => {
+                const q = prompt('Nhập câu hỏi mẫu (user):');
+                if (!q) return;
+                const a = prompt('Nhập trả lời tương ứng:');
+                if (!a) return;
+                KB.push({ q: q.toLowerCase(), a });
+                // recompute embeddings (free; small KB)
+                if (kbEmbeddings) kbEmbeddings.dispose();
+                await computeKBEmbeddings();
+                alert('Đã thêm vào knowledge base.');
+            };
+
+            // preload some greeting
+            pushMessage("Chào bạn — mình là demo chatbox dùng TensorFlow.js + USE. Hỏi mình điều gì nhé!", 'bot');
+
+        })();
+    </script>
+</body>
+
+</html>
