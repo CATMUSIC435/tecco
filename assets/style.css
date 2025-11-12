@@ -1861,6 +1861,11 @@
       right: calc(40% * -1);
     }
   }
+  .md\:right-12 {
+    @media (width >= 48rem) {
+      right: calc(var(--spacing) * 12);
+    }
+  }
   .md\:bottom-0 {
     @media (width >= 48rem) {
       bottom: calc(var(--spacing) * 0);
