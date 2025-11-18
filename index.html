@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <style>
         @font-face {
             font-family: "SVN Larken";
@@ -32,70 +35,11 @@
             font-style: normal;
             font-display: swap;
         }
-
-        :root {
-            --font-mono: "PPSupplyMono", monospace;
-            --font-sans: "PP Neue Montreal", sans-serif;
-            --font-emoji: "emoji", sans-serif;
-            --color-bg: #000;
-            --color-text: #fff;
-            --color-text-muted: rgba(255, 255, 255, 0.8);
-            --color-text-light: rgba(255, 255, 255, 0.6);
-            --color-accent: #fff;
-            --font-size-mono: clamp(10px, 1.2vw, 12px);
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-        }
-
-        body {
-            font-family: emoji;
-            cursor: pointer;
-        }
-
-        .splide__slide img {
-            transition: transform 1.5s ease, opacity 1.5s ease;
-            object-fit: cover;
-        }
-
-        .splide__slide.is-active img {
-            /* transform: scale(1.05); */
-            opacity: 1;
-        }
-
-        .splide__slide:not(.is-active) img {
-            opacity: 0.4;
-        }
-
-        /* --- CUSTOM ARROWS --- */
-        .splide__arrow {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(6px);
-            color: white;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-        }
-
-        .splide__arrow:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
     </style>
 
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/custom.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 
 <body class="bg-[#002d4d]! w-screen overflow-x-hidden">
@@ -351,7 +295,7 @@
             <div class="w-screen md:h-screen h-auto overflow-hidden">
                 <div class="flex flex-col-reverse md:grid md:grid-cols-2 custom-grid relative h-full">
                     <div class="relative z-1">
-                        <div class="bg-gray-100 w-full md:w-[550px] relative md:top-[30%] md:left-[30%] py-4 px-8">
+                        <div class="bg-gray-100 w-full md:w-[450px] relative md:top-[30%] md:left-[30%] py-4 px-8">
                             <div
                                 class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
                             </div>
@@ -373,7 +317,10 @@
                         </div>
                     </div>
                     <div class="h-full flex flex-col justify-center">
-                        <div class="main-container py-12 md:py-20">
+                        <div>
+                            <img src="connect.png" class="w-full h-full" alt="" srcset="">
+                        </div>
+                        <!-- <div class="main-container py-12 md:py-20">
                             <div class="main">
 
                                 <div class="circle">
@@ -529,7 +476,7 @@
                                     <img src="assets/logo.png" alt="logo" class="w-20" />
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -647,7 +594,7 @@
                             SỐNG NĂNG LƯỢNG</h2>
                     </div>
                     <div
-                        class="col-span-2 w-full md:h-full mdflex flex-col justify-between items-center relative custom-grid">
+                        class="col-span-2 w-full md:h-full mdflex flex-col justify-between items-center relative custom-grid py-4 md:py-0">
                         <div
                             class=" mt-12 md:mt-72 mx-auto max-w-sm relative shadow-[0_0_20px_rgba(255,255,255,0.15)] backdrop-blur-md animate-glow">
                             <div class="px-4 py-4">
@@ -669,7 +616,7 @@
                         </div>
 
                     </div>
-                    <div class="col-span-3 h-full overflow-hidden">
+                    <div class="col-span-3 h-60 md:h-full overflow-hidden">
                         <div class="w-full h-full bg-cover"
                             style="background-image: url(diamond-boulevard.jpg);background-position: 70%,100%;">
                         </div>
@@ -707,23 +654,12 @@
 
         <div class="section md:bg-gray-100">
             <div class="h-full md:h-screen w-screen overflow-hidden">
-                <div class="py-12">
-                    <div class="grid grid-cols-2 pb-4 pl-8 md:pl-24">
+                <div class="relative">
+                    <div class="md:absolute top-0 left-0 z-1 grid grid-cols-2 py-8 pl-8 md:pl-24">
                         <div class="border-b-[1px] border-gray-400">
                             <h2 class="text-3xl md:text-5xl font-bold cinzel mb-1 text-orange-500 uppercase">
                                 diamond boulevard
                             </h2>
-                        </div>
-                        <div>
-                            <div class="flex justify-end">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-orange-500 w-14 h-14"
-                                    viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right">
-                                    <path d="M7 7h10v10" />
-                                    <path d="M7 17 17 7" />
-                                </svg>
-                            </div>
                         </div>
                         <div class="col-span-2">
 
@@ -735,26 +671,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-img md:px-12 py-4 cinzel text-black">
-                        <div class="card">
-                            <img src="diamond-boulevard.jpg">
-                            <div class="card__head uppercase">diamond boulevard</div>
+                    <div class="h-full">
+                        <div id="main-carousel" class="splide w-full md:h-screen max-h-screen overflow-hidden mb-4 md:mb-0">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide"><img src="diamond-boulevard.jpg" /></li>
+                                    <li class="splide__slide"><img src="diamond-boulevard-night.jpg" /></li>
+                                    <li class="splide__slide"><img src="diamond-boulevard.jpg" /></li>
+                                    <li class="splide__slide"><img src="diamond-boulevard-night.jpg" /></li>
+                                    <li class="splide__slide"><img src="diamond-boulevard.jpg" /></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="card">
-                            <img src="diamond-boulevard.jpg">
-                            <div class="card__head uppercase">diamond boulevard</div>
-                        </div>
-                        <div class="card">
-                            <img src="diamond-boulevard.jpg">
-                            <div class="card__head uppercase">diamond boulevard</div>
-                        </div>
-                        <div class="card">
-                            <img src="diamond-boulevard.jpg">
-                            <div class="card__head uppercase">diamond boulevard</div>
-                        </div>
-                        <div class="card">
-                            <img src="diamond-boulevard.jpg">
-                            <div class="card__head uppercase">diamond boulevard</div>
+                        
+                        <div class="md:absolute bottom-0 left-0 z-1 h-24 w-full custom">
+                            <div id="thumbnail-carousel" class="mx-auto splide thumbnail w-full max-w-6xl">
+                                <div class="splide__track">
+                                    <ul class="splide__list grid grid-cols-3 gap-4">
+                                        <li class="splide__slide"><img src="diamond-boulevard.jpg"
+                                                class="rounded-t-md w-auto h-full object-cover" />
+                                        </li>
+                                        <li class="splide__slide"><img src="diamond-boulevard-night.jpg"
+                                                class="rounded-t-md w-auto h-full object-cover" />
+                                        </li>
+                                        <li class="splide__slide"><img src="diamond-boulevard.jpg"
+                                                class="rounded-t-md w-auto h-full object-cover" />
+                                        </li>
+                                        <li class="splide__slide"><img src="diamond-boulevard-night.jpg"
+                                                class="rounded-t-md w-auto h-full object-cover" />
+                                        </li>
+                                        <li class="splide__slide"><img src="diamond-boulevard.jpg"
+                                                class="rounded-t-md w-auto h-full object-cover" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -793,12 +744,10 @@
                     </div>
                 </div>
                 <div class="mx-auto text-white cinzel dark:text-gray-800 py-6   ">
-                    <!-- Splide Carousel -->
+            
                     <div id="luxury-splide" class="splide md:pl-24">
                         <div class="splide__track">
                             <ul class="splide__list">
-
-                                <!-- Slide 1 -->
                                 <li class="splide__slide">
                                     <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96"
                                         style="background-image: url('diamond-boulevard.jpg');">
@@ -911,7 +860,7 @@
 
                         <!-- Custom Arrows -->
                         <div class="splide__arrows absolute bottom-4 md:right-12 flex gap-3 z-10 w-full md:w-auto">
-                            <div class="relative -bottom-16 flex justify-end w-full">
+                            <div class="absolute bottom-24 md:relative md:-bottom-16 flex justify-end w-full">
                                 <div class="mx-auto w-44">
                                     <button
                                         class="splide__arrow splide__arrow--prev w-44 h-44 flex items-center justify-center rounded-none! border border-[#ff6900]! bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300"
@@ -942,44 +891,117 @@
 
 
         <div class="section">
-            <div class="w-screen md:h-screen overflow-hidden">
+            <div class="w-screen md:h-screen  px-4 md:px-0 overflow-hidden">
 
-                <div class="py-12 md:py-0 flex flex-col gap-12 md:gap-0 md:grid grid-cols-1 md:grid-cols-2 h-full">
-                    <div class="w-full h-full flex flex-col justify-center">
+                <div class="flex flex-col gap-12 md:gap-0 md:grid grid-cols-1 md:grid-cols-2 h-full">
+                    <div class="w-[96%] md:w-full h-full flex flex-col justify-center">
                         <div
-                            class="max-w-lg mx-auto text-white md:text-black text-shadow-2xs p-8 shadow-lg bg-gray-100/20 backdrop-blur-md md:bg-gray-100 w-full relative py-4 px-8">
+                            class="md:max-w-lg mx-auto text-white md:text-black text-shadow-2xs shadow-lg bg-gray-100/10 rounded-2xl md:rounded-none backdrop-blur-md md:bg-gray-100 w-full relative py-2 md:py-4 px-4 md:px-8">
                             <div
-                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                                class="hidden md:block absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
                             </div>
                             <div
-                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                                class="hidden md:block absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
                             </div>
-                            <h1 class="text-xl md:text-2xl cinzel font-bold mb-6 text-center">
+                            <div class="relative z-1">
+<h1 class="text-xl md:text-2xl cinzel font-bold mb-6 text-center">
                                 CÔNG TY CỔ PHẦN DXMD VIỆT NAM
                             </h1>
                             <ul class="space-y-3 text-sm list-item list-inside">
-                                <li class="flex gap-2"><svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 40 44" width="30px" height="30px" fill="currentColor" class="styles_icon__GYIzc stroke-black" style="align-self: flex-start;"><defs><style>._icon_location_cls-1{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.4px}</style></defs><path d="M7.1 5.4H33c1.9 0 3.5 1.6 3.5 3.5v17.8c0 1.9-1.6 3.5-3.5 3.5h-8.6L20 38.7l-4.4-8.5H7.1c-1.9 0-3.5-1.6-3.5-3.5V8.9c0-1.9 1.6-3.5 3.5-3.5h0Z" class="_icon_location_cls-1"></path><path d="M14.7 14.4v11h10.7v-6.5" class="_icon_location_cls-1"></path><path d="M18.1 18H22v3.9h-3.9V18h0zM11.9 17.1l.1-.1h-.1l8-7.2.1.1.1-.1 8 7.2H28l.1.1" class="_icon_location_cls-1"></path></svg>Trụ sở chính: 88/10 Đại Lộ Bình Dương, Phường Lái Thiêu, TP.Thuận An, Tỉnh Bình
+                                <li class="flex gap-2">
+                                    <div class="w-9 h-9">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        data-name="Isolation Mode" viewBox="0 0 40 44" width="30px" height="30px"
+                                        fill="currentColor" class="styles_icon__GYIzc stroke-white md:stroke-black"
+                                        style="align-self: flex-start;">
+                                        <defs>
+                                            <style>
+                                                ._icon_location_cls-1 {
+                                                    fill: none;
+                                                    stroke-linecap: round;
+                                                    stroke-linejoin: round;
+                                                    stroke-width: 1.4px
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path
+                                            d="M7.1 5.4H33c1.9 0 3.5 1.6 3.5 3.5v17.8c0 1.9-1.6 3.5-3.5 3.5h-8.6L20 38.7l-4.4-8.5H7.1c-1.9 0-3.5-1.6-3.5-3.5V8.9c0-1.9 1.6-3.5 3.5-3.5h0Z"
+                                            class="_icon_location_cls-1"></path>
+                                        <path d="M14.7 14.4v11h10.7v-6.5" class="_icon_location_cls-1"></path>
+                                        <path
+                                            d="M18.1 18H22v3.9h-3.9V18h0zM11.9 17.1l.1-.1h-.1l8-7.2.1.1.1-.1 8 7.2H28l.1.1"
+                                            class="_icon_location_cls-1"></path>
+                                    </svg>
+                                    </div>
+                                    Trụ sở chính: 88/10 Đại Lộ Bình Dương, Phường Lái Thiêu, TP.Thuận An, Tỉnh
+                                    Bình
                                     Dương</li>
-                                <li class="flex gap-2"><svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 40 44" width="30px" height="30px" fill="currentColor" class="styles_icon__GYIzc stroke-black" style="align-self: flex-start;"><defs><style>._icon_location_cls-1{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.4px}</style></defs><path d="M7.1 5.4H33c1.9 0 3.5 1.6 3.5 3.5v17.8c0 1.9-1.6 3.5-3.5 3.5h-8.6L20 38.7l-4.4-8.5H7.1c-1.9 0-3.5-1.6-3.5-3.5V8.9c0-1.9 1.6-3.5 3.5-3.5h0Z" class="_icon_location_cls-1"></path><path d="M14.7 14.4v11h10.7v-6.5" class="_icon_location_cls-1"></path><path d="M18.1 18H22v3.9h-3.9V18h0zM11.9 17.1l.1-.1h-.1l8-7.2.1.1.1-.1 8 7.2H28l.1.1" class="_icon_location_cls-1"></path></svg>VP. TPHCM: 456 Xô Viết Nghệ Tĩnh, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</li>
-                                <li class="flex gap-2"><div class="w-9">
-<img src="https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/images/icons/icon-hotline.png" alt="Ảnh dự án 3" class="w-full h-auto object-cover" loading="lazy"></div>Hotline: <a href="tel:0965355355"
-                                        class="underline hover:text-orange-400">0965.355.355</a></li>
-                                <li class="flex gap-2"><svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 42 45" width="30px" height="30px" fill="currentColor" class="styles_icon__GYIzc stroke-black"><defs><style>._icon_map_cls-2{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.4px}</style></defs><path d="M4.6 38.6h32.8V18.5L21 6.4 4.6 18.5v20.1h0z" class="_icon_map_cls-2"></path><path d="M37.4 38.6 21 25.1 4.6 38.6M4.9 19l12 9M37.1 19l-12 9" class="_icon_map_cls-2"></path></svg>Email: <a href="mailto:info@atskygarden.vn"
-                                        class="underline hover:text-orange-400">info@atskygarden.vn</a></li>
-                                <li class="flex gap-2">Website: <a href="https://atskygarden.vn"
-                                        class="underline hover:text-orange-400">atskygarden.vn</a></li>
-                                <!-- <li>Chính sách bảo mật</li> -->
+                                <li class="flex gap-2">
+                                     <div class="w-9 h-9">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        data-name="Isolation Mode" viewBox="0 0 40 44" width="30px" height="30px"
+                                        fill="currentColor" class="styles_icon__GYIzc stroke-white md:stroke-black"
+                                        style="align-self: flex-start;">
+                                        <defs>
+                                            <style>
+                                                ._icon_location_cls-1 {
+                                                    fill: none;
+                                                    stroke-linecap: round;
+                                                    stroke-linejoin: round;
+                                                    stroke-width: 1.4px
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path
+                                            d="M7.1 5.4H33c1.9 0 3.5 1.6 3.5 3.5v17.8c0 1.9-1.6 3.5-3.5 3.5h-8.6L20 38.7l-4.4-8.5H7.1c-1.9 0-3.5-1.6-3.5-3.5V8.9c0-1.9 1.6-3.5 3.5-3.5h0Z"
+                                            class="_icon_location_cls-1"></path>
+                                        <path d="M14.7 14.4v11h10.7v-6.5" class="_icon_location_cls-1"></path>
+                                        <path
+                                            d="M18.1 18H22v3.9h-3.9V18h0zM11.9 17.1l.1-.1h-.1l8-7.2.1.1.1-.1 8 7.2H28l.1.1"
+                                            class="_icon_location_cls-1"></path>
+                                    </svg></div>VP. TPHCM: 456 Xô Viết Nghệ Tĩnh, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh
+                                </li>
+                                <li class="flex gap-2">
+                                    <div class="w-9">
+                                        <img src="https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/images/icons/icon-hotline.png"
+                                            alt="Ảnh dự án 3" class="w-full h-auto object-cover md:invert-100" loading="lazy">
+                                    </div>Hotline: <a href="tel:0965355355"
+                                        class="underline hover:text-orange-400">0965.355.355</a>
+                                </li>
+                                <li class="flex gap-2">
+                                    <div class="w-9">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        data-name="Isolation Mode" viewBox="0 0 42 45" width="30px" height="30px"
+                                        fill="currentColor" class="styles_icon__GYIzc stroke-white md:stroke-black">
+                                        <defs>
+                                            <style>
+                                                ._icon_map_cls-2 {
+                                                    fill: none;
+                                                    stroke-linecap: round;
+                                                    stroke-linejoin: round;
+                                                    stroke-width: 1.4px
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path d="M4.6 38.6h32.8V18.5L21 6.4 4.6 18.5v20.1h0z" class="_icon_map_cls-2">
+                                        </path>
+                                        <path d="M37.4 38.6 21 25.1 4.6 38.6M4.9 19l12 9M37.1 19l-12 9"
+                                            class="_icon_map_cls-2"></path>
+                                    </svg></div>Email: <a href="mailto:info@atskygarden.vn"
+                                        class="hover:text-orange-400">info@atskygarden.vn</a></li>
                             </ul>
+                            </div>
                         </div>
 
                     </div>
-                    <div class="h-full flex flex-col justify-center items-center">
-                        <div class="w-full max-w-xl text-white md:text-black space-y-4 bg-gray-100/20 backdrop-blur-md md:bg-gray-100  relative py-4 px-8">
+                    <div class="w-[96%] md:h-full flex flex-col justify-center items-center">
+                        <div
+                            class="w-full max-w-xl text-white md:text-black space-y-4 bg-gray-100/10 rounded-2xl md:rounded-none backdrop-blur-md md:bg-gray-100  relative py-4 px-8">
                             <div
-                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                                class="hidden md:block absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
                             </div>
                             <div
-                                class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                                class="hidden md:block absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
                             </div>
                             <h2 class="text-2xl font-semibold tracking-wide text-orange-    ">
                                 LIÊN HỆ
@@ -987,21 +1009,62 @@
 
                             <div class="flex items-start space-x-3">
                                 <div class="w-9">
-<img src="https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/images/icons/icon-hotline.png" alt="Ảnh dự án 3" class="w-full h-auto object-cover" loading="lazy"></div>
+                                    <img src="https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/images/icons/icon-hotline.png"
+                                        alt="Ảnh dự án 3" class="w-full h-auto object-cover md:invert-100" loading="lazy">
+                                </div>
                                 <p>0965.355.355</p>
                             </div>
 
                             <div class="flex items-start space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 42 45" width="30px" height="30px" fill="currentColor" class="styles_icon__GYIzc stroke-black"><defs><style>._icon_map_cls-2{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.4px}</style></defs><path d="M4.6 38.6h32.8V18.5L21 6.4 4.6 18.5v20.1h0z" class="_icon_map_cls-2"></path><path d="M37.4 38.6 21 25.1 4.6 38.6M4.9 19l12 9M37.1 19l-12 9" class="_icon_map_cls-2"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 42 45"
+                                    width="30px" height="30px" fill="currentColor"
+                                    class="styles_icon__GYIzc stroke-white md:stroke-black">
+                                    <defs>
+                                        <style>
+                                            ._icon_map_cls-2 {
+                                                fill: none;
+                                                stroke-linecap: round;
+                                                stroke-linejoin: round;
+                                                stroke-width: 1.4px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path d="M4.6 38.6h32.8V18.5L21 6.4 4.6 18.5v20.1h0z" class="_icon_map_cls-2">
+                                    </path>
+                                    <path d="M37.4 38.6 21 25.1 4.6 38.6M4.9 19l12 9M37.1 19l-12 9"
+                                        class="_icon_map_cls-2"></path>
+                                </svg>
                                 <p>info@atskygarden.vn</p>
                             </div>
 
-                            <div class="flex items-start flex-wrap">
-                               <svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 40 44" width="30px" height="30px" fill="currentColor" class="styles_icon__GYIzc stroke-black" style="align-self: flex-start;"><defs><style>._icon_location_cls-1{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.4px}</style></defs><path d="M7.1 5.4H33c1.9 0 3.5 1.6 3.5 3.5v17.8c0 1.9-1.6 3.5-3.5 3.5h-8.6L20 38.7l-4.4-8.5H7.1c-1.9 0-3.5-1.6-3.5-3.5V8.9c0-1.9 1.6-3.5 3.5-3.5h0Z" class="_icon_location_cls-1"></path><path d="M14.7 14.4v11h10.7v-6.5" class="_icon_location_cls-1"></path><path d="M18.1 18H22v3.9h-3.9V18h0zM11.9 17.1l.1-.1h-.1l8-7.2.1.1.1-.1 8 7.2H28l.1.1" class="_icon_location_cls-1"></path></svg>
-                                
-                                    Số 54C đường Cách Mạng Tháng Tám,
-                                    Khu phố Hòa Long, phường Lái Thiêu,
-                                    thành phố Thuận An, tỉnh Bình Dương
+                            <div class="flex items-start gap-1">
+                                <div class="w-9">
+                                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Isolation Mode" viewBox="0 0 40 44"
+                                    width="30px" height="30px" fill="currentColor"
+                                    class="styles_icon__GYIzc stroke-white md:stroke-black" style="align-self: flex-start;">
+                                    <defs>
+                                        <style>
+                                            ._icon_location_cls-1 {
+                                                fill: none;
+                                                stroke-linecap: round;
+                                                stroke-linejoin: round;
+                                                stroke-width: 1.4px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path
+                                        d="M7.1 5.4H33c1.9 0 3.5 1.6 3.5 3.5v17.8c0 1.9-1.6 3.5-3.5 3.5h-8.6L20 38.7l-4.4-8.5H7.1c-1.9 0-3.5-1.6-3.5-3.5V8.9c0-1.9 1.6-3.5 3.5-3.5h0Z"
+                                        class="_icon_location_cls-1"></path>
+                                    <path d="M14.7 14.4v11h10.7v-6.5" class="_icon_location_cls-1"></path>
+                                    <path
+                                        d="M18.1 18H22v3.9h-3.9V18h0zM11.9 17.1l.1-.1h-.1l8-7.2.1.1.1-.1 8 7.2H28l.1.1"
+                                        class="_icon_location_cls-1"></path>
+                                </svg>
+                                </div>
+
+                                Số 54C đường Cách Mạng Tháng Tám,
+                                Khu phố Hòa Long, phường Lái Thiêu,
+                                thành phố Thuận An, tỉnh Bình Dương
                             </div>
 
                             <!-- Form -->
@@ -1415,6 +1478,10 @@
         Trình duyệt không hỗ trợ thẻ audio.
     </audio>
 
+    <div class="text-md text-white mx-auto max-w-6xl w-full px-4 md:px-0">
+
+    </div>
+
 
     <script>
         (function () {
@@ -1448,11 +1515,46 @@
         })();
     </script>
 
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.9/fullpage.min.js"></script>
     <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+
+    <script>
+        const main = new Splide('#main-carousel', {
+            type: 'fade',
+            heightRatio: 0.6,
+            pagination: false,
+            arrows: true,
+            cover: true,
+        }).mount();
+
+        const thumbs = new Splide('#thumbnail-carousel', {
+            rewind: true,
+            pagination: false,
+            isNavigation: true,
+            arrows: false,
+            perPage: 5,
+            gap: "1rem",
+            autoplay: true,
+            type: "loop",
+            interval: 3000,
+            speed: 900,
+            pauseOnHover: true,
+            pagination: true,
+            arrows: true,
+            breakpoints: {
+                1280: { perPage: 4 },
+                1024: { perPage: 3 },
+                768: { perPage: 3 },
+                480: { perPage: 3 },
+            },
+        }).mount();
+
+        main.sync(thumbs);
+    </script>
 
     <script>
 
@@ -1526,11 +1628,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const init = new Splide('#luxury-carousel', {
-                type: 'fade',          // hiệu ứng mờ dần
-                rewind: true,          // quay lại đầu
-                autoplay: true,        // tự chạy
-                interval: 4000,        // delay giữa các slide
-                speed: 1000,           // tốc độ chuyển slide
+                type: 'fade',
+                rewind: true,
+                autoplay: true,
+                interval: 4000,
+                speed: 1000,
                 pauseOnHover: false,
                 arrows: true,
                 pagination: true,
@@ -1554,7 +1656,7 @@
                     1280: { perPage: 4 },
                     1024: { perPage: 3 },
                     768: { perPage: 2 },
-                    480: { perPage: 1 },
+                    480: { perPage: 2 },
                 },
             }).mount();
         });
@@ -1586,7 +1688,6 @@
 
         btn.addEventListener("click", () => {
             if (!isVisible) {
-                // Hiện ra từ 2 bên
                 const appearLeft = gsap.fromTo(left,
                     { opacity: 0, x: -100 },
                     { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
@@ -1596,7 +1697,6 @@
                     { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.1 }
                 );
             } else {
-                // Ẩn đi
                 gsap.to(left, { opacity: 0, x: -100, duration: 0.8, ease: "power2.in" });
                 gsap.to(right, { opacity: 0, x: 100, duration: 0.8, ease: "power2.in" });
             }

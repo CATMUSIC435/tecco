@@ -472,3 +472,19 @@
 .animate-glow {
   animation: glow 3s ease-in-out infinite;
 }
+
+.article-content figure {
+    @apply my-8;
+}
+
+.article-content figure img {
+    @apply w-full rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] object-cover;
+}
+
+.article-content figure figcaption {
+    @apply text-center text-sm text-gray-500 mt-3 italic;
+}
+
+.article-content a.detail-img-lightbox {
+    @apply block overflow-hidden rounded-xl;
+}
