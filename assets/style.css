@@ -362,6 +362,9 @@
   .z-50 {
     z-index: 50;
   }
+  .z-\[99\] {
+    z-index: 99;
+  }
   .z-\[100\] {
     z-index: 100;
   }
@@ -1926,6 +1929,11 @@
   .md\:w-20 {
     @media (width >= 48rem) {
       width: calc(var(--spacing) * 20);
+    }
+  }
+  .md\:w-96 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 96);
     }
   }
   .md\:w-\[400px\] {
