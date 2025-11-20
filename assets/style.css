@@ -539,6 +539,9 @@
   .h-\[70vh\] {
     height: 70vh;
   }
+  .h-\[400px\] {
+    height: 400px;
+  }
   .h-auto {
     height: auto;
   }
@@ -1899,6 +1902,11 @@
   .md\:h-\[70vh\] {
     @media (width >= 48rem) {
       height: 70vh;
+    }
+  }
+  .md\:h-\[420px\] {
+    @media (width >= 48rem) {
+      height: 420px;
     }
   }
   .md\:h-\[500px\] {
