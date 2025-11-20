@@ -110,8 +110,8 @@
 
 .menu {
   --color: #fff;
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   padding: 0;
   margin: 0;
   outline: none;
@@ -124,8 +124,8 @@
 }
 
 .menu svg {
-  width: 64px;
-  height: 48px;
+  width: 90px;
+  height: 75px;
   top: -6px;
   left: -14px;
   stroke: var(--color);
