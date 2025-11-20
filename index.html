@@ -1140,9 +1140,6 @@
         Khu vực A - thông tin tóm tắt
     </div>
 
-
-
-
     <div class="fixed top-2 left-2 z-[99]" id="menuBtn">
         <button class="menu">
             <svg class="w-full h-full" viewBox="0 0 64 48">
@@ -1161,6 +1158,48 @@
 
     <div id="menuOverlay"
         class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none z-[998] transition-opacity duration-500">
+    </div>
+
+
+    <div class="fixed bottom-6 right-2 z-[99] text-white">
+        <div class="md:h-full w-full flex justify-end gap-4">
+            <div class="flex gap-1 items-center border-[0px] rounded-full md:px-2 bg-orange-400/10 backdrop-blur-md hover:luxury-text">
+                <div
+                    class="w-10 h-10 p-2 flex items-center justify-center">
+                    <img src="assets/phone.svg" class="h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                </div>
+                <span class="text-xl font-bold hidden md:block">
+                    0965.355.355
+                </span>
+            </div>
+
+            <div class="flex gap-1 items-center border-[0px] rounded-full md:px-2  bg-orange-400/10 backdrop-blur-md hover:luxury-text">
+                <div class="w-10 h-10 p-2 flex items-center justify-center">
+                    <img src="assets/envelope.svg" class="w-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
+      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      group-hover:rotate-180 
+      group-hover:invert-50 group-hover:sepia group-hover:saturate-[300%] 
+      group-hover:hue-rotate-[25deg] group-hover:brightness-150" alt="" srcset="">
+                </div>
+                <span class="text-xl font-bold hidden md:block">
+                    Nhận tin
+                </span>
+            </div>
+
+            <div class="flex gap-1 items-center border-[0px] rounded-full md:px-2  bg-orange-400/10 backdrop-blur-md hover:luxury-text">
+                <div
+                    class="w-10 h-10 p-2 flex items-center justify-center">
+                    <img src="assets/zalo.svg" class="w-full object-cover" alt="" srcset="">
+                </div>
+                <span class="text-xl font-bold hidden md:block">
+                    Zalo
+                </span>
+            </div>
+        </div>
     </div>
 
     <!-- Menu Panel -->
@@ -1405,16 +1444,6 @@
             </div>
         </div>
     </div>
-
-    <audio id="bgAudio" preload="auto">
-        <!-- <source src="assets/videoplayback.mp3" type="audio/mpeg"> -->
-        Trình duyệt không hỗ trợ thẻ audio.
-    </audio>
-
-    <div class="text-md text-white mx-auto max-w-6xl w-full px-4 md:px-0">
-
-    </div>
-
 
     <script>
         (function () {
