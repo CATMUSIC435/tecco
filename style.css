@@ -488,3 +488,7 @@
 .article-content a.detail-img-lightbox {
   @apply block overflow-hidden rounded-xl;
 }
+
+.ctx .splide__arrow--prev {
+    display: none !important;
+}
