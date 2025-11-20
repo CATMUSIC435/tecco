@@ -254,11 +254,11 @@
 
 @keyframes gradientFlow {
   0% {
-    background-position: 0% 50%;
+    background-position: 200% 50%;
   }
 
   100% {
-    background-position: 200% 50%;
+    background-position: 0% 50%;
   }
 }
 
@@ -474,17 +474,17 @@
 }
 
 .article-content figure {
-    @apply my-8;
+  @apply my-8;
 }
 
 .article-content figure img {
-    @apply w-full rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] object-cover;
+  @apply w-full rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] object-cover;
 }
 
 .article-content figure figcaption {
-    @apply text-center text-sm text-gray-500 mt-3 italic;
+  @apply text-center text-sm text-gray-500 mt-3 italic;
 }
 
 .article-content a.detail-img-lightbox {
-    @apply block overflow-hidden rounded-xl;
+  @apply block overflow-hidden rounded-xl;
 }

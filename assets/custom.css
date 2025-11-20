@@ -481,3 +481,52 @@ body #myVideo {
 .custom .splide__slide:focus-visible {
   outline: none !important;
 }
+
+.pulse-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 40px auto;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #f78a4f;
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulse 3s ease-out infinite;
+
+  box-shadow: 0 0 20px 5px rgb(255, 105, 0, 0.6),
+    0 0 40px 15px rgba(255, 104, 0, 0.4),
+    0 0 60px 25px rgba(255, 196, 86 0.2);
+}
+
+.ring1 {
+  animation-delay: 0s;
+}
+
+.ring2 {
+  animation-delay: .7s;
+}
+
+.ring3 {
+  animation-delay: 1.4s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(1.6);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}

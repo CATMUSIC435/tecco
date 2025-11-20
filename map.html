@@ -5,119 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/style.css">
     <style>
-        .polygon-animate {
-            stroke-dasharray: 1300;
-            /* tổng chiều dài đường polygon */
-            stroke-dashoffset: 1300;
-            /* ẩn toàn bộ nét ban đầu */
-            transition: stroke-dashoffset 1.2s ease-in-out;
+        .pulse-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 40px auto;
         }
 
-        .polygon-animate:hover {
-            stroke-dashoffset: 0;
-            /* vẽ hết nét khi hover */
-            filter: drop-shadow(0 0 10px #ff0000);
+        .ring {
+            position: absolute;
+            inset: 0;
+            border: 1px solid #f78a4f;
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulse 3s ease-out infinite;
+
+            box-shadow: 0 0 20px 5px rgb(255, 105, 0, 0.6),
+                0 0 40px 15px rgba(255, 104, 0, 0.4),
+                0 0 60px 25px rgba(255, 196, 86 0.2);
+        }
+
+        .ring1 {
+            animation-delay: 0s;
+        }
+
+        .ring2 {
+            animation-delay: .7s;
+        }
+
+        .ring3 {
+            animation-delay: 1.4s;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+
+            60% {
+                transform: scale(1.6);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(2.1);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 
 <body>
-    <section>
-        <div class="mx-auto max-w-2xl w-full">
-            <div class="w-full h-full relative">
-                <img src="map.jpg" class="w-full h-auto object-cover" usemap="#image-map">
-
-                <map name="image-map">
-                    <area target="" alt="" title="" href="" coords="500,909,821,912,817,1304,500,1300" shape="poly">
-                </map>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3632 3509"
-                    class="w-full h-full absolute top-0 left-0 z-10" aria-labelledby="polyTitle" role="img">
-                    <title id="polyTitle">Polygon từ image-map</title>
-
-                    <polygon id="areaPolygon" points="500,909 821,912 817,1304 500,1300" fill="transparent"
-                        stroke="#ff0000" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"
-                        class="cursor-pointer polygon-animate transition-all duration-700" />
-
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <div id="sidebar"
-        class="fixed top-0 right-0 w-96 h-full bg-white text-gray-900 shadow-lg transform translate-x-full transition-transform duration-500 ease-in-out z-50">
-        <div class="px-4 py-2 flex justify-between items-center border-b">
-            <button id="closeSidebar"
-                class="text-xl font-bold text-black hover:rotate-90 hover:text-red-600 transition-transform duration-200 ease-linear">✕</button>
-            <h2 class="text-xl font-bold font-sans">Thông tin chi tiết</h2>
-        </div>
-        <div class="p-4 space-y-2">
-            <table class="w-full table-fixed text-sm">
-                <tbody class="divide-y divide-slate-700 font-sans">
-                    <tr class="align-top">
-                        <th class="w-1/3 text-left pr-4 py-3 font-medium">Tên khu vực</th>
-                        <td class="py-3">Khu A</td>
-                    </tr>
-
-                    <tr class="align-top">
-                        <th class="text-left pr-4 py-3 font-medium">Tọa độ</th>
-                        <td class="py-3">
-                            <div>
-                                500,909 → 821,912 → 817,1304 → 500,1300
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr class="align-top">
-                        <th class="text-left pr-4 py-3 font-medium">Mô tả</th>
-                        <td class="py-3">
-                            Đây là khu vực thử nghiệm trong bản đồ SVG.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="pulse-container">
+        <span class="ring ring1"></span>
+        <span class="ring ring2"></span>
+        <span class="ring ring3"></span>
     </div>
-
-
-    <script>
-        const polygon = document.getElementById('areaPolygon');
-        const sidebar = document.getElementById('sidebar');
-        const closeBtn = document.getElementById('closeSidebar');
-
-        polygon.addEventListener('click', (e) => {
-            e.preventDefault();
-            sidebar.classList.remove('translate-x-full');
-        });
-
-        closeBtn.addEventListener('click', () => {
-            sidebar.classList.add('translate-x-full');
-        });
-
-        const tooltip = document.getElementById('tooltip');
-
-        // Khi di chuột vào polygon
-        polygon.addEventListener('mouseenter', () => {
-            tooltip.classList.remove('hidden');
-        });
-
-        // Khi di chuyển chuột trong polygon
-        polygons.forEach((el) => {
-            el.addEventListener('mousemove', (e) => {
-                const offsetX = 10; // khoảng cách tooltip so với con trỏ
-                const offsetY = 10;
-
-                tooltip.style.left = e.pageX + offsetX + 'px';
-                tooltip.style.top = e.pageY + offsetY + 'px';
-                tooltip.style.display = 'block'; // hiện tooltip khi di chuột
-            });
-
-            el.addEventListener('mouseleave', () => {
-            tooltip.classList.add('hidden');
-            });
-        });
-    </script>
 </body>
 
 </html>
