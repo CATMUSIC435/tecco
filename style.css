@@ -492,3 +492,9 @@
 .ctx .splide__arrow--prev {
     display: none !important;
 }
+
+
+@keyframes blink {
+ 0%, 100% { filter: brightness(1); transform: scale(1) }
+50% { filter: brightness(1.05); transform: scale(1.05) }
+}

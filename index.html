@@ -61,7 +61,7 @@
                         <h1 class="text-2xl md:text-4xl font-bold cinzel mb-4 uppercase relative z-1">
                             <img src="text-price.png" alt="" srcset="">
                             <div class="mx-auto w-1/2 mt-2 md:mt-4">
-                                <img src="price.png" alt="" srcset="">
+                                <img src="price.png" alt="" srcset="" class="animate-[blink_2s_ease-in-out_infinite]">
                             </div>
                         </h1>
                     </div>
@@ -360,22 +360,9 @@
 
         <div class="section">
             <div
-                class="w-screen md:h-screen justify-between relative custom-grid overflow-hidden flex flex-col-reverse md:flex-row">
+                class="w-screen md:h-screen justify-between relative custom-grid overflow-hidden flex flex-col md:flex-row">
 
-                <div class="relative z-1">
-                    <div class="bg-gray-100 w-full md:w-[400px] relative md:top-[30%] md:-right-[40%] py-4 px-8">
-                        <div
-                            class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
-                        </div>
-                        <div
-                            class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
-                        </div>
 
-                        <h2 class="text-2xl md:text-4xl font-bold cinzel mb-4 uppercase">
-                            <span class="text-orange-500 luxury-text">Mặt bằng tầng!</span>
-                        </h2>
-                    </div>
-                </div>
                 <div class="md:pl-24 md:h-screen overflow-hidden">
                     <div class="relative w-full h-[50vh] md:h-[70vh] lg:h-[100vh] overflow-hidden">
 
@@ -384,7 +371,7 @@
                                 <ul class="splide__list">
                                     <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
                                         <div class="w-full h-full relative">
-                                            <img src="floor.png" class="mx-auto h-full w-auto! object-cover"
+                                            <img src="assets/floor-3-30.png" class="mx-auto h-full w-auto! object-cover"
                                                 alt="Slide 1">
                                             <map name="image-map">
                                                 <area target="" alt="" title="" href=""
@@ -597,9 +584,163 @@
                                             </svg>
                                         </div>
                                     </li>
+                                    <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
+                                        <div class="w-full h-full relative">
+                                            <img src="assets/floor-2.png" class="mx-auto h-full w-auto! object-cover"
+                                                alt="Slide 1">
+                                            <map name="image-map">
+                                                <area target="" alt="" title="" href=""
+                                                    coords="2558,4143,3084,4143,3122,4099,3129,4015,3289,4015,3295,4163,3193,4163,3193,4439,2558,4439"
+                                                    shape="poly"> <area target="" alt="" title="" href=""
+                                                    coords="2558,4451,3186,4445,3199,4913,2565,4913" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="3295,3470,3295,2835,3860,2835,3866,3470" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="3866,3465,3866,2836,4449,2836,4443,3471" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="3283,3623,3879,3623,3872,4264,3289,4258" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="3866,4268,3866,3620,4449,3627,4456,4262" shape="poly">
+                                                <area target="" alt="" title="" href=""
+                                                    coords="4539,2591,4539,2200,4610,2200,4610,1950,5174,1963,5174,2591"
+                                                    shape="poly"> <area target="" alt="" title="" href=""
+                                                    coords="5180,2457,5180,1963,5712,1956,5719,2591,5328,2598,5328,2457"
+                                                    shape="poly"> <area target="" alt="" title="" href=""
+                                                    coords="5501,2716,5501,2594,5719,2587,5719,1959,6341,1965,6341,2741,5706,2748,5706,2722"
+                                                    shape="poly"> <area target="" alt="" title="" href=""
+                                                    coords="5321,3343,5321,2713,5706,2713,5706,2745,5956,2739,5963,3342"
+                                                    shape="poly"> <area target="" alt="" title="" href=""
+                                                    coords="5328,4000,5321,3352,5956,3339,5956,3993" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="5328,3997,5334,4651,5969,4651,5956,3991" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="4520,4713,4533,4052,5168,4052,5187,4719" shape="poly"> <area
+                                                    target="" alt="" title="" href=""
+                                                    coords="4443,3208,4449,2836,4546,2836,4539,2586,5174,2593,5168,3163,4655,3163,4648,3208"
+                                                    shape="poly">
+                                            </map>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7264 7017"
+                                                class="w-full md:h-full absolute top-0 left-0 z-10"
+                                                aria-labelledby="polyTitle" role="img">
+                                                <title id="polyTitle">Polygon từ image-map</title>
+
+                                                <polygon
+                                                    points="2558,4143 3084,4143 3122,4099 3129,4015 3289,4015 3295,4163 3193,4163 3193,4439 2558,4439"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="35.48" data-carpet="30.79" data-img="CH-11.png" />
+
+                                                <polygon points="2558,4451 3186,4445 3199,4913 2565,4913"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="50.10" data-carpet="43.90" data-img="CH-12.png" />
+
+                                                <polygon points="3295,3470 3295,2835 3860,2835 3866,3470"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" />
+
+                                                <polygon points="3866,3465 3866,2836 4449,2836 4443,3471"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" />
+
+                                                <polygon points="3283,3623 3879,3623 3872,4264 3289,4258"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="60.66" data-carpet="54.81" data-img="CH-10.png" />
+
+                                                <polygon points="3866,4268 3866,3620 4449,3627 4456,4262"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="60.00" data-carpet="54.68" data-img="CH-09.png" />
+
+                                                <polygon
+                                                    points="4539,2591 4539,2200 4610,2200 4610,1950 5174,1963 5174,2591"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" />
+
+                                                <polygon
+                                                    points="5180,2457 5180,1963 5712,1956 5719,2591 5328,2598 5328,2457"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="53.08" data-carpet="48.56" data-img="CH-03.png" />
+
+                                                <polygon
+                                                    points="5501,2716 5501,2594 5719,2587 5719,1959 6341,1965 6341,2741 5706,2748 5706,2722"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" />
+
+                                                <!-- <polygon
+                                                    points="5321,3343 5321,2713 5706,2713 5706,2745 5956,2739 5963,3342"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" /> -->
+
+                                                <!-- <polygon points="5328,4000 5321,3352 5956,3339 5956,3993"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" /> -->
+
+                                                <!-- <polygon points="5328,3997 5334,4651 5969,4651 5956,3991"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" /> -->
+
+                                                <!-- <polygon points="4520,4713 4533,4052 5168,4052 5187,4719"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="82.30" data-carpet="74.61" data-img="CH-18.png" /> -->
+
+                                                <polygon
+                                                    points="4443,3208 4449,2836 4546,2836 4539,2586 5174,2593 5168,3163 4655,3163 4648,3208"
+                                                    fill="transparent" stroke="#ff0000" stroke-width="8"
+                                                    stroke-linejoin="round" stroke-linecap="round"
+                                                    class="areaPolygon cursor-pointer polygon-animate transition-all duration-700"
+                                                    data-builtup="56.11" data-carpet="59.41" data-img="CH-01.png" />
+
+                                            </svg>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
+                                        <div class="w-full h-full relative">
+                                            <img src="assets/floor-1.png" class="mx-auto h-full w-auto! object-cover"
+                                                alt="Slide 1">
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="relative z-1">
+                    <div class="bg-gray-100 w-full md:w-[350px] relative md:top-[30%] right-0 lg:right-[20%] py-4 px-8">
+                        <div
+                            class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -top-6 -left-6">
+                        </div>
+                        <div
+                            class="absolute h-1/2 w-1/2 border-b-[2px] border-r-[2px] border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15)] -bottom-6 -right-8">
+                        </div>
+
+                        <h2 class="text-2xl md:text-4xl font-bold cinzel mb-4 uppercase">
+                            <span class="text-orange-500 luxury-text">Mặt bằng tầng!</span>
+                        </h2>
                     </div>
                 </div>
 
@@ -1163,9 +1304,9 @@
 
     <div class="fixed bottom-2 right-2 z-[99] text-white">
         <div class="md:h-full w-full flex justify-end gap-4">
-            <div class="flex gap-1 items-center border-[0px] rounded-full md:px-2 bg-orange-400/10 backdrop-blur-md hover:luxury-text">
-                <div
-                    class="w-10 h-10 p-2 flex items-center justify-center">
+            <div
+                class="flex gap-1 items-center border-[0px] rounded-full md:px-2 bg-orange-400/10 backdrop-blur-md hover:luxury-text">
+                <div class="w-10 h-10 p-2 flex items-center justify-center">
                     <img src="assets/phone.svg" class="h-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
       transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
       group-hover:rotate-180 
@@ -1177,7 +1318,8 @@
                 </span>
             </div>
 
-            <div class="flex gap-1 items-center border-[0px] rounded-full md:px-2  bg-orange-400/10 backdrop-blur-md hover:luxury-text">
+            <div
+                class="flex gap-1 items-center border-[0px] rounded-full md:px-2  bg-orange-400/10 backdrop-blur-md hover:luxury-text">
                 <div class="w-10 h-10 p-2 flex items-center justify-center">
                     <img src="assets/envelope.svg" class="w-full object-cover filter invert sepia saturate-200 hue-rotate-[180deg] brightness-110 
       transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
@@ -1190,9 +1332,9 @@
                 </span>
             </div>
 
-            <div class="flex gap-1 items-center border-[0px] rounded-full md:px-2  bg-orange-400/10 backdrop-blur-md hover:luxury-text">
-                <div
-                    class="w-10 h-10 p-2 flex items-center justify-center">
+            <div
+                class="flex gap-1 items-center border-[0px] rounded-full md:px-2  bg-orange-400/10 backdrop-blur-md hover:luxury-text">
+                <div class="w-10 h-10 p-2 flex items-center justify-center">
                     <img src="assets/zalo.svg" class="w-full object-cover" alt="" srcset="">
                 </div>
                 <span class="text-xl font-bold hidden md:block">
@@ -1444,39 +1586,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        (function () {
-            const audio = document.getElementById('bgAudio');
-            audio.loop = true;
-            audio.volume = 0.7;
-            audio.preload = 'auto';
-
-            document.addEventListener('click', async () => {
-                try {
-                    if (audio.paused) {
-                        await audio.play();
-                    } else {
-                        // audio.pause();
-                    }
-                } catch (err) {
-                    console.warn('Không thể play:', err);
-                }
-            }, { once: false });
-
-            window.addEventListener('keydown', async (ev) => {
-                if (ev.code === 'Space') {
-                    ev.preventDefault();
-                    try {
-                        if (audio.paused) await audio.play();
-                        // else audio.pause();
-                    } catch (err) { console.warn(err); }
-                }
-            });
-
-        })();
-    </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.9/fullpage.min.js"></script>
