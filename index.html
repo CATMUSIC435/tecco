@@ -717,12 +717,12 @@
                                             </svg>
                                         </div>
                                     </li>
-                                    <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
+                                    <!-- <li class="splide__slide h-[50vh] md:h-[70vh] lg:h-[100vh]">
                                         <div class="w-full h-full relative">
                                             <img src="assets/floor-1.png" class="mx-auto h-full w-auto! object-cover"
                                                 alt="Slide 1">
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -775,9 +775,9 @@
                         </div>
 
                     </div>
-                    <div class="col-span-3 h-60 md:h-full overflow-hidden">
+                    <div class="col-span-3 h-80 md:h-full overflow-hidden">
                         <div class="w-full h-full bg-cover"
-                            style="background-image: url(diamond-boulevard.jpg);background-position: 70%,100%;">
+                            style="background-image: url(assets/floor-1.png);background-position: 70%,100%;">
                         </div>
                     </div>
                 </div>
@@ -1804,17 +1804,17 @@
             });
         });
 
-        polygon.forEach((el) => {
-            el.addEventListener('mouseenter', () => {
-                tooltip.classList.remove('hidden');
-            });
-        });
+        // polygon.forEach((el) => {
+        //     el.addEventListener('mouseenter', () => {
+        //         tooltip.classList.remove('hidden');
+        //     });
+        // });
 
-        polygon.forEach((el) => {
-            el.addEventListener('mouseleave', () => {
-                tooltip.classList.add('hidden');
-            });
-        });
+        // polygon.forEach((el) => {
+        //     el.addEventListener('mouseleave', () => {
+        //         tooltip.classList.add('hidden');
+        //     });
+        // });
 
         polygon.forEach((el) => {
             el.addEventListener('mousemove', (e) => {
